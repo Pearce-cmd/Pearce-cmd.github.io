@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="Pearce" />
+
+
+
+<meta name="description" content="一些基础的隐写密码题">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【write up】基础密码隐写题">
+<meta property="og:url" content="http://yoursite.com/2020/01/21/%E3%80%90write%20up%E3%80%91%E5%9F%BA%E7%A1%80%E5%AF%86%E7%A0%81%E9%9A%90%E5%86%99/index.html">
+<meta property="og:site_name" content="Pearce">
+<meta property="og:description" content="一些基础的隐写密码题">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://pearceimg.oss-cn-beijing.aliyuncs.com/%E3%80%90write%20up%E3%80%91%E5%9F%BA%E7%A1%80%E9%9A%90%E5%86%99%E5%AF%86%E7%A0%81/%E9%9A%90%E5%86%99/%E5%A4%A7%E7%99%BD.png?x-oss-process=style/md">
+<meta property="og:image" content="http://pearceimg.oss-cn-beijing.aliyuncs.com/%E3%80%90write%20up%E3%80%91%E5%9F%BA%E7%A1%80%E9%9A%90%E5%86%99%E5%AF%86%E7%A0%81/%E9%9A%90%E5%86%99/gif1.png?x-oss-process=style/md">
+<meta property="og:image" content="http://pearceimg.oss-cn-beijing.aliyuncs.com/%E3%80%90write%20up%E3%80%91%E5%9F%BA%E7%A1%80%E9%9A%90%E5%86%99%E5%AF%86%E7%A0%81/%E9%9A%90%E5%86%99/%E4%B8%8B%E9%9D%A2%E4%BB%80%E4%B9%88%E9%83%BD%E6%B2%A1%E6%9C%89.png?x-oss-process=style/md">
+<meta property="og:image" content="http://pearceimg.oss-cn-beijing.aliyuncs.com/%E3%80%90write%20up%E3%80%91%E5%9F%BA%E7%A1%80%E9%9A%90%E5%86%99%E5%AF%86%E7%A0%81/%E9%9A%90%E5%86%99/ste1.png?x-oss-process=style/md">
+<meta property="og:image" content="http://pearceimg.oss-cn-beijing.aliyuncs.com/%E3%80%90write%20up%E3%80%91%E5%9F%BA%E7%A1%80%E9%9A%90%E5%86%99%E5%AF%86%E7%A0%81/%E9%9A%90%E5%86%99/ste2.png?x-oss-process=style/md">
+<meta property="og:image" content="http://pearceimg.oss-cn-beijing.aliyuncs.com/%E3%80%90write%20up%E3%80%91%E5%9F%BA%E7%A1%80%E9%9A%90%E5%86%99%E5%AF%86%E7%A0%81/%E9%9A%90%E5%86%99/fore1.png?x-oss-process=style/md">
+<meta property="og:image" content="http://pearceimg.oss-cn-beijing.aliyuncs.com/%E3%80%90write%20up%E3%80%91%E5%9F%BA%E7%A1%80%E9%9A%90%E5%86%99%E5%AF%86%E7%A0%81/%E9%9A%90%E5%86%99/foremost1.2.png?x-oss-process=style/md">
+<meta property="og:image" content="http://pearceimg.oss-cn-beijing.aliyuncs.com/%E3%80%90write%20up%E3%80%91%E5%9F%BA%E7%A1%80%E9%9A%90%E5%86%99%E5%AF%86%E7%A0%81/%E9%9A%90%E5%86%99/foremost1.3.png?x-oss-process=style/md">
+<meta property="og:image" content="http://pearceimg.oss-cn-beijing.aliyuncs.com/%E3%80%90write%20up%E3%80%91%E5%9F%BA%E7%A1%80%E9%9A%90%E5%86%99%E5%AF%86%E7%A0%81/%E9%9A%90%E5%86%99/foremost2.1.png?x-oss-process=style/md">
+<meta property="og:image" content="http://pearceimg.oss-cn-beijing.aliyuncs.com/%E3%80%90write%20up%E3%80%91%E5%9F%BA%E7%A1%80%E9%9A%90%E5%86%99%E5%AF%86%E7%A0%81/%E9%9A%90%E5%86%99/foremost2.2.png?x-oss-process=style/md">
+<meta property="og:image" content="http://pearceimg.oss-cn-beijing.aliyuncs.com/%E3%80%90write%20up%E3%80%91%E5%9F%BA%E7%A1%80%E9%9A%90%E5%86%99%E5%AF%86%E7%A0%81/%E5%AF%86%E7%A0%81/%E5%AF%86%E7%A0%815.png?x-oss-process=style/md">
+<meta property="og:image" content="http://pearceimg.oss-cn-beijing.aliyuncs.com/%E3%80%90write%20up%E3%80%91%E5%9F%BA%E7%A1%80%E9%9A%90%E5%86%99%E5%AF%86%E7%A0%81/%E5%AF%86%E7%A0%81/%E5%AF%86%E7%A0%815.2.png?x-oss-process=style/md">
+<meta property="article:published_time" content="2020-01-20T16:14:00.000Z">
+<meta property="article:modified_time" content="2020-01-30T14:01:28.000Z">
+<meta property="article:author" content="Pearce">
+<meta property="article:tag" content="write up">
+<meta property="article:tag" content="隐写">
+<meta property="article:tag" content="密码">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://pearceimg.oss-cn-beijing.aliyuncs.com/%E3%80%90write%20up%E3%80%91%E5%9F%BA%E7%A1%80%E9%9A%90%E5%86%99%E5%AF%86%E7%A0%81/%E9%9A%90%E5%86%99/%E5%A4%A7%E7%99%BD.png?x-oss-process=style/md">
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="Pearce" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/favicon.png">
+
+
+
+    <link href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+
+<link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>【write up】基础密码隐写题 | Pearce</title>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdnjs.cloudflare.com/ajax/libs/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: true
+    }
+</script>
+
+
+    <script>
+        yiliaConfig.jquery_ui = [true, "//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js", "//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.4/css/jquery-ui.min.css"];
+    </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/avatar.png" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">Pearce</a></h1>
+        </hgroup>
+
+        
+
+        
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="false" />
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class='no-result'>No results found <i class='fa fa-spinner fa-pulse'></i></p>
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="mailto:1219469416@qq.com" title="Email"></a>
+                            
+                                <a class="fa 网易云音乐" href="https://music.163.com/#/user/home?id=97423031" target="_blank" rel="noopener" title="网易云音乐"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/" rel="tag">web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/write-up/" rel="tag">write up</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zip%E5%8A%A0%E5%AF%86/" rel="tag">zip加密</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/" rel="tag">学习总结</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AF%86%E7%A0%81/" rel="tag">密码</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%80%86%E5%90%91/" rel="tag">逆向</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9A%90%E5%86%99/" rel="tag">隐写</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://hexo.io" target="_blank" rel="noopener">Hexo</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://pages.github.com/" target="_blank" rel="noopener">GitHub</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://moxfive.xyz/" target="_blank" rel="noopener">MOxFIVE</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">Pearce</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/avatar.png" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">Pearce</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:1219469416@qq.com" title="Email"></a>
+                            
+                                <a class="fa 网易云音乐" target="_blank" href="https://music.163.com/#/user/home?id=97423031" title="网易云音乐"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+</nav>
+      <div class="body-wrap"><article id="post-【write up】基础密码隐写" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/01/21/%E3%80%90write%20up%E3%80%91%E5%9F%BA%E7%A1%80%E5%AF%86%E7%A0%81%E9%9A%90%E5%86%99/" class="article-date">
+      <time datetime="2020-01-20T16:14:00.000Z" itemprop="datePublished">2020-01-21</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      【write up】基础密码隐写题
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/write-up/">write up</a><a class="article-category-link" href="/categories/write-up/%E9%9A%90%E5%86%99/">隐写</a><a class="article-category-link" href="/categories/write-up/%E9%9A%90%E5%86%99/%E5%AF%86%E7%A0%81/">密码</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/write-up/" rel="tag">write up</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AF%86%E7%A0%81/" rel="tag">密码</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%9A%90%E5%86%99/" rel="tag">隐写</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>一些基础的隐写密码题<a id="more"></a></p>
+<p><strong><em>题目链接</em></strong>：<a href="https://github.com/Pearce-cmd/ctf/blob/master/%E5%9F%BA%E7%A1%80%E9%9A%90%E5%86%99%E5%AF%86%E7%A0%81%E9%A2%98%E7%9B%AE.rar" target="_blank" rel="noopener">传送门</a></p>
+<h1 id="隐写"><a href="#隐写" class="headerlink" title="隐写"></a>隐写</h1><h2 id="emmm…搜索一下试试看"><a href="#emmm…搜索一下试试看" class="headerlink" title="emmm…搜索一下试试看"></a>emmm…搜索一下试试看</h2><h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><blockquote>
+<p>无</p>
+</blockquote>
+<hr>
+<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><p>扔到winhex里 搜索flag</p>
+<hr>
+<h3 id="Flag"><a href="#Flag" class="headerlink" title="Flag"></a>Flag</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flag&#123;first_blood&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="大白有个大肚子"><a href="#大白有个大肚子" class="headerlink" title="大白有个大肚子"></a>大白有个大肚子</h2><h3 id="Description-1"><a href="#Description-1" class="headerlink" title="Description"></a>Description</h3><blockquote>
+<p>无</p>
+</blockquote>
+<hr>
+<h3 id="Solution-1"><a href="#Solution-1" class="headerlink" title="Solution"></a>Solution</h3><p>感觉图片不整，更改长宽，看到flag</p>
+<p><img src="http://pearceimg.oss-cn-beijing.aliyuncs.com/%E3%80%90write%20up%E3%80%91%E5%9F%BA%E7%A1%80%E9%9A%90%E5%86%99%E5%AF%86%E7%A0%81/%E9%9A%90%E5%86%99/%E5%A4%A7%E7%99%BD.png?x-oss-process=style/md" alt=""></p>
+<hr>
+<h3 id="Flag-1"><a href="#Flag-1" class="headerlink" title="Flag"></a>Flag</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flag&#123;he1l0_d4_ba1&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="这真的是一个动图不信你一帧一帧看"><a href="#这真的是一个动图不信你一帧一帧看" class="headerlink" title="这真的是一个动图不信你一帧一帧看"></a>这真的是一个动图不信你一帧一帧看</h2><h3 id="Description-2"><a href="#Description-2" class="headerlink" title="Description"></a>Description</h3><blockquote>
+<p>无</p>
+</blockquote>
+<hr>
+<h3 id="Solution-2"><a href="#Solution-2" class="headerlink" title="Solution"></a>Solution</h3><p>补全gif的文件头474946，上脚本进行逐帧查看</p>
+<p><img src="http://pearceimg.oss-cn-beijing.aliyuncs.com/%E3%80%90write%20up%E3%80%91%E5%9F%BA%E7%A1%80%E9%9A%90%E5%86%99%E5%AF%86%E7%A0%81/%E9%9A%90%E5%86%99/gif1.png?x-oss-process=style/md" alt=""></p>
+<p><strong>exp</strong>:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line">gifFileName = <span class="string">'gifgif.gif'</span></span><br><span class="line">im = Image.open(gifFileName)</span><br><span class="line">pngDir = gifFileName[:<span class="number">-4</span>]</span><br><span class="line">os.mkdir(pngDir)</span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">	<span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">		current = im.tell()</span><br><span class="line">		im.save(pngDir+<span class="string">'/'</span>+str(current)+<span class="string">'.png'</span>)</span><br><span class="line">		im.seek(current+<span class="number">1</span>)</span><br><span class="line"><span class="keyword">except</span> EOFError:</span><br><span class="line">	<span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+
+<p>得到flag</p>
+<hr>
+<h3 id="Flag-2"><a href="#Flag-2" class="headerlink" title="Flag"></a>Flag</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flag&#123;g1f_head_1s_magic///&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="相信我，图片下面什么都没有"><a href="#相信我，图片下面什么都没有" class="headerlink" title="相信我，图片下面什么都没有"></a>相信我，图片下面什么都没有</h2><h3 id="Description-3"><a href="#Description-3" class="headerlink" title="Description"></a>Description</h3><blockquote>
+<p>无</p>
+</blockquote>
+<hr>
+<h3 id="Solution-3"><a href="#Solution-3" class="headerlink" title="Solution"></a>Solution</h3><p>图片移走，或者调整透明度</p>
+<img src="http://pearceimg.oss-cn-beijing.aliyuncs.com/%E3%80%90write%20up%E3%80%91%E5%9F%BA%E7%A1%80%E9%9A%90%E5%86%99%E5%AF%86%E7%A0%81/%E9%9A%90%E5%86%99/%E4%B8%8B%E9%9D%A2%E4%BB%80%E4%B9%88%E9%83%BD%E6%B2%A1%E6%9C%89.png?x-oss-process=style/md" style="zoom:80%;" />
+
+<hr>
+<h3 id="Flag-3"><a href="#Flag-3" class="headerlink" title="Flag"></a>Flag</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Flag&#123;you_found_it&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="stegsolve1"><a href="#stegsolve1" class="headerlink" title="stegsolve1"></a>stegsolve1</h2><h3 id="Description-4"><a href="#Description-4" class="headerlink" title="Description"></a>Description</h3><blockquote>
+<p>无</p>
+</blockquote>
+<hr>
+<h3 id="Solution-4"><a href="#Solution-4" class="headerlink" title="Solution"></a>Solution</h3><p>放进stegsolve直接看到flag</p>
+<img src="http://pearceimg.oss-cn-beijing.aliyuncs.com/%E3%80%90write%20up%E3%80%91%E5%9F%BA%E7%A1%80%E9%9A%90%E5%86%99%E5%AF%86%E7%A0%81/%E9%9A%90%E5%86%99/ste1.png?x-oss-process=style/md" style="zoom: 50%;" />
+
+<hr>
+<h3 id="Flag-4"><a href="#Flag-4" class="headerlink" title="Flag"></a>Flag</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">3DS&#123;Gr4b_Only_th1s_B1ts&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="stegsolve2"><a href="#stegsolve2" class="headerlink" title="stegsolve2"></a>stegsolve2</h2><h3 id="Description-5"><a href="#Description-5" class="headerlink" title="Description"></a>Description</h3><blockquote>
+<p>无</p>
+</blockquote>
+<hr>
+<h3 id="Solution-5"><a href="#Solution-5" class="headerlink" title="Solution"></a>Solution</h3><p>放进stegsolve，分析三个颜色的0通道，得flag</p>
+<img src="http://pearceimg.oss-cn-beijing.aliyuncs.com/%E3%80%90write%20up%E3%80%91%E5%9F%BA%E7%A1%80%E9%9A%90%E5%86%99%E5%AF%86%E7%A0%81/%E9%9A%90%E5%86%99/ste2.png?x-oss-process=style/md" style="zoom:67%;" />
+
+<hr>
+<h3 id="Flag-5"><a href="#Flag-5" class="headerlink" title="Flag"></a>Flag</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flag&#123;thi s_is_easy_LSB&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="有点儿奇怪的码"><a href="#有点儿奇怪的码" class="headerlink" title="有点儿奇怪的码"></a>有点儿奇怪的码</h2><h3 id="Description-6"><a href="#Description-6" class="headerlink" title="Description"></a>Description</h3><blockquote>
+<p>无</p>
+</blockquote>
+<hr>
+<h3 id="Solution-6"><a href="#Solution-6" class="headerlink" title="Solution"></a>Solution</h3><p>QR_Research扫码</p>
+<h3 id="Flag-6"><a href="#Flag-6" class="headerlink" title="Flag"></a>Flag</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flag&#123;Fuck_Th4t_QRCod3!!!&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="信安交响曲"><a href="#信安交响曲" class="headerlink" title="信安交响曲"></a>信安交响曲</h2><h3 id="Description-7"><a href="#Description-7" class="headerlink" title="Description"></a>Description</h3><blockquote>
+<p>无</p>
+</blockquote>
+<hr>
+<h3 id="Solution-7"><a href="#Solution-7" class="headerlink" title="Solution"></a>Solution</h3><p>用audacity检测，发现摩尔斯密码</p>
+<p>…/—/..-/-./-../..—/../…/..–.-/.–/.-/…-/.</p>
+<hr>
+<h3 id="Flag-7"><a href="#Flag-7" class="headerlink" title="Flag"></a>Flag</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flag&#123;sound2is_wave&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="foremost1"><a href="#foremost1" class="headerlink" title="foremost1"></a>foremost1</h2><h3 id="Description-8"><a href="#Description-8" class="headerlink" title="Description"></a>Description</h3><blockquote>
+<p>无</p>
+</blockquote>
+<hr>
+<h3 id="Solution-8"><a href="#Solution-8" class="headerlink" title="Solution"></a>Solution</h3><p>先检测一下，发现有压缩包，分离出一个带密码的压缩包</p>
+<img src="http://pearceimg.oss-cn-beijing.aliyuncs.com/%E3%80%90write%20up%E3%80%91%E5%9F%BA%E7%A1%80%E9%9A%90%E5%86%99%E5%AF%86%E7%A0%81/%E9%9A%90%E5%86%99/fore1.png?x-oss-process=style/md" style="zoom: 67%;" />
+
+<p>查看图片属性，发现一个字符串，base64解码后就是密码</p>
+<img src="http://pearceimg.oss-cn-beijing.aliyuncs.com/%E3%80%90write%20up%E3%80%91%E5%9F%BA%E7%A1%80%E9%9A%90%E5%86%99%E5%AF%86%E7%A0%81/%E9%9A%90%E5%86%99/foremost1.2.png?x-oss-process=style/md" style="zoom: 80%;" />
+
+<p>解压得到一个图片，更改高度得到flag</p>
+<img src="http://pearceimg.oss-cn-beijing.aliyuncs.com/%E3%80%90write%20up%E3%80%91%E5%9F%BA%E7%A1%80%E9%9A%90%E5%86%99%E5%AF%86%E7%A0%81/%E9%9A%90%E5%86%99/foremost1.3.png?x-oss-process=style/md" style="zoom:50%;" />
+
+<hr>
+<h3 id="Flag-8"><a href="#Flag-8" class="headerlink" title="Flag"></a>Flag</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">BUGKU&#123;a1e5aSA&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="foremost2"><a href="#foremost2" class="headerlink" title="foremost2"></a>foremost2</h2><h3 id="Description-9"><a href="#Description-9" class="headerlink" title="Description"></a>Description</h3><blockquote>
+<p>无</p>
+</blockquote>
+<hr>
+<h3 id="Solution-9"><a href="#Solution-9" class="headerlink" title="Solution"></a>Solution</h3><p>分离出一个压缩包，提示伪加密</p>
+<img src="http://pearceimg.oss-cn-beijing.aliyuncs.com/%E3%80%90write%20up%E3%80%91%E5%9F%BA%E7%A1%80%E9%9A%90%E5%86%99%E5%AF%86%E7%A0%81/%E9%9A%90%E5%86%99/foremost2.1.png?x-oss-process=style/md" style="zoom: 80%;" />
+
+<p>更改全局变量标签<code>09</code>为<code>00</code>，解压后得到flag</p>
+<img src="http://pearceimg.oss-cn-beijing.aliyuncs.com/%E3%80%90write%20up%E3%80%91%E5%9F%BA%E7%A1%80%E9%9A%90%E5%86%99%E5%AF%86%E7%A0%81/%E9%9A%90%E5%86%99/foremost2.2.png?x-oss-process=style/md" style="zoom:80%;" />
+
+<hr>
+<h3 id="Flag-9"><a href="#Flag-9" class="headerlink" title="Flag"></a>Flag</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flag&#123;WelcomeT3WhaleCTF&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="密码"><a href="#密码" class="headerlink" title="密码"></a>密码</h1><h2 id="Crypto1"><a href="#Crypto1" class="headerlink" title="Crypto1"></a>Crypto1</h2><h3 id="Description-10"><a href="#Description-10" class="headerlink" title="Description"></a>Description</h3><blockquote>
+<p> ..-.  .-..  .-  –. { -.  .  .  .–.  ..-  -.-.  .-.  -.–  .–.  -  — }</p>
+</blockquote>
+<hr>
+<h3 id="Solution-10"><a href="#Solution-10" class="headerlink" title="Solution"></a>Solution</h3><p>摩尔斯密码</p>
+<h3 id="Flag-10"><a href="#Flag-10" class="headerlink" title="Flag"></a>Flag</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flag&#123;neepucrypto&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Crypto2"><a href="#Crypto2" class="headerlink" title="Crypto2"></a>Crypto2</h2><h3 id="Description-11"><a href="#Description-11" class="headerlink" title="Description"></a>Description</h3><blockquote>
+<p>f{c_ctlw0tr0aemoy}g1e_p</p>
+</blockquote>
+<hr>
+<h3 id="Solution-11"><a href="#Solution-11" class="headerlink" title="Solution"></a>Solution</h3><p>栅栏密码，4</p>
+<hr>
+<h3 id="Flag-11"><a href="#Flag-11" class="headerlink" title="Flag"></a>Flag</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flag&#123;we1c0me_to_crypt0&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Crypto3"><a href="#Crypto3" class="headerlink" title="Crypto3"></a>Crypto3</h2><h3 id="Description-12"><a href="#Description-12" class="headerlink" title="Description"></a>Description</h3><blockquote>
+<p>ZmxhZ3t0aGlzX2lzX2Jhc2U2NH0=</p>
+</blockquote>
+<hr>
+<h3 id="Solution-12"><a href="#Solution-12" class="headerlink" title="Solution"></a>Solution</h3><p>base64</p>
+<hr>
+<h3 id="Flag-12"><a href="#Flag-12" class="headerlink" title="Flag"></a>Flag</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flag&#123;this_is_base64&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Crypto4"><a href="#Crypto4" class="headerlink" title="Crypto4"></a>Crypto4</h2><h3 id="Description-13"><a href="#Description-13" class="headerlink" title="Description"></a>Description</h3><blockquote>
+<p>8A30EC6807F71BC69D096D8E4D501ADE 不可逆加密</p>
+</blockquote>
+<hr>
+<h3 id="Solution-13"><a href="#Solution-13" class="headerlink" title="Solution"></a>Solution</h3><p>md5</p>
+<hr>
+<h3 id="Flag-13"><a href="#Flag-13" class="headerlink" title="Flag"></a>Flag</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flag&#123;admin666&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Crypto5"><a href="#Crypto5" class="headerlink" title="Crypto5"></a>Crypto5</h2><h3 id="Description-14"><a href="#Description-14" class="headerlink" title="Description"></a>Description</h3><blockquote>
+<p>题目：解开它！</p>
+<p>我们发现了一张图片，上面的符号好像是一种外星生命体的语言！我们迫切的想要知道外星人说了些什么，请解开它！</p>
+<p>密文：</p>
+<p><img src="http://pearceimg.oss-cn-beijing.aliyuncs.com/%E3%80%90write%20up%E3%80%91%E5%9F%BA%E7%A1%80%E9%9A%90%E5%86%99%E5%AF%86%E7%A0%81/%E5%AF%86%E7%A0%81/%E5%AF%86%E7%A0%815.png?x-oss-process=style/md" alt=""></p>
+</blockquote>
+<hr>
+<h3 id="Solution-14"><a href="#Solution-14" class="headerlink" title="Solution"></a>Solution</h3><p>拿去识图了一下，发现是《飞出个未来》中的外星语，百度百科拿到密码表</p>
+<p><img src="http://pearceimg.oss-cn-beijing.aliyuncs.com/%E3%80%90write%20up%E3%80%91%E5%9F%BA%E7%A1%80%E9%9A%90%E5%86%99%E5%AF%86%E7%A0%81/%E5%AF%86%E7%A0%81/%E5%AF%86%E7%A0%815.2.png?x-oss-process=style/md" alt=""></p>
+<hr>
+<h3 id="Flag-14"><a href="#Flag-14" class="headerlink" title="Flag"></a>Flag</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">icectf&#123;good_n3wz_3veryon3_1_i1k3_fu7ur4ma_4nd_ta3ir_4maz1ng_3as7er_39g5&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Crypto6"><a href="#Crypto6" class="headerlink" title="Crypto6"></a>Crypto6</h2><h3 id="Description-15"><a href="#Description-15" class="headerlink" title="Description"></a>Description</h3><blockquote>
+<p>\u0059\u006f\u0075\u0020\u0068\u0061\u0064\u0020\u006d\u0065\u0020\u0061\u0074\u0020\u0068\u0065\u006c\u006c\u006f</p>
+</blockquote>
+<hr>
+<h3 id="Solution-15"><a href="#Solution-15" class="headerlink" title="Solution"></a>Solution</h3><p>unicode解码</p>
+<hr>
+<h3 id="Flag-15"><a href="#Flag-15" class="headerlink" title="Flag"></a>Flag</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flag&#123;You had me at hello&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Crypto7"><a href="#Crypto7" class="headerlink" title="Crypto7"></a>Crypto7</h2><h3 id="Description-16"><a href="#Description-16" class="headerlink" title="Description"></a>Description</h3><blockquote>
+<p>题目：你知道 最全最可爱的字符表情符号 是什么吗</p>
+<p> 密文：</p>
+<p>ﾟωﾟﾉ= /｀ｍ´）ﾉ ~┻━┻  //<em>´∇｀</em>/ [‘<em>‘]; o=(ﾟｰﾟ)  =</em>=3; c=(ﾟΘﾟ) =(ﾟｰﾟ)-(ﾟｰﾟ); (ﾟДﾟ) =(ﾟΘﾟ)= (o^<em>^o)/ (o^</em>^o);(ﾟДﾟ)={ﾟΘﾟ: ‘<em>‘ ,ﾟωﾟﾉ : ((ﾟωﾟﾉ==3) +’</em>‘) [ﾟΘﾟ] ,ﾟｰﾟﾉ :(ﾟωﾟﾉ+ ‘<em>‘)[o^</em>^o -(ﾟΘﾟ)] ,ﾟДﾟﾉ:((ﾟｰﾟ==3) +’<em>‘)[ﾟｰﾟ] }; (ﾟДﾟ) [ﾟΘﾟ] =((ﾟωﾟﾉ==3) +’</em>‘) [c^<em>^o];(ﾟДﾟ) [‘c’] = ((ﾟДﾟ)+’</em>‘) [ (ﾟｰﾟ)+(ﾟｰﾟ)-(ﾟΘﾟ) ];(ﾟДﾟ) [‘o’] = ((ﾟДﾟ)+’<em>‘) [ﾟΘﾟ];(ﾟoﾟ)=(ﾟДﾟ) [‘c’]+(ﾟДﾟ) [‘o’]+(ﾟωﾟﾉ +’</em>‘)[ﾟΘﾟ]+ ((ﾟωﾟﾉ==3) +’<em>‘) [ﾟｰﾟ] + ((ﾟДﾟ) +’</em>‘) [(ﾟｰﾟ)+(ﾟｰﾟ)]+ ((ﾟｰﾟ==3) +’<em>‘) [ﾟΘﾟ]+((ﾟｰﾟ==3) +’</em>‘) [(ﾟｰﾟ) - (ﾟΘﾟ)]+(ﾟДﾟ) [‘c’]+((ﾟДﾟ)+’<em>‘) [(ﾟｰﾟ)+(ﾟｰﾟ)]+ (ﾟДﾟ) [‘o’]+((ﾟｰﾟ==3) +’</em>‘) [ﾟΘﾟ];(ﾟДﾟ) [‘<em>‘] =(o^</em>^o) [ﾟoﾟ] [ﾟoﾟ];(ﾟεﾟ)=((ﾟｰﾟ==3) +’<em>‘) [ﾟΘﾟ]+ (ﾟДﾟ) .ﾟДﾟﾉ+((ﾟДﾟ)+’</em>‘) [(ﾟｰﾟ) + (ﾟｰﾟ)]+((ﾟｰﾟ==3) +’<em>‘) [o^</em>^o -ﾟΘﾟ]+((ﾟｰﾟ==3) +’<em>‘) [ﾟΘﾟ]+ (ﾟωﾟﾉ +’</em>‘) [ﾟΘﾟ]; (ﾟｰﾟ)+=(ﾟΘﾟ); (ﾟДﾟ)[ﾟεﾟ]=’\‘; (ﾟДﾟ).ﾟΘﾟﾉ=(ﾟДﾟ+ ﾟｰﾟ)[o^<em>^o -(ﾟΘﾟ)];(oﾟｰﾟo)=(ﾟωﾟﾉ +’</em>‘)[c^<em>^o];(ﾟДﾟ) [ﾟoﾟ]=’&quot;‘;(ﾟДﾟ) [‘</em>‘] ( (ﾟДﾟ) [‘<em>‘] (ﾟεﾟ+(ﾟДﾟ)[ﾟoﾟ]+ (ﾟДﾟ)[ﾟεﾟ]+(ﾟΘﾟ)+ (ﾟｰﾟ)+ (ﾟΘﾟ)+ (ﾟДﾟ)[ﾟεﾟ]+(ﾟΘﾟ)+ ((ﾟｰﾟ) + (ﾟΘﾟ))+ (ﾟｰﾟ)+ (ﾟДﾟ)[ﾟεﾟ]+(ﾟΘﾟ)+ (ﾟｰﾟ)+ ((ﾟｰﾟ) + (ﾟΘﾟ))+ (ﾟДﾟ)[ﾟεﾟ]+(ﾟΘﾟ)+ ((o^</em>^o) +(o^<em>^o))+ ((o^</em>^o) - (ﾟΘﾟ))+ (ﾟДﾟ)[ﾟεﾟ]+(ﾟΘﾟ)+ ((o^<em>^o) +(o^</em>^o))+ (ﾟｰﾟ)+ (ﾟДﾟ)[ﾟεﾟ]+((ﾟｰﾟ) + (ﾟΘﾟ))+ (c^<em>^o)+ (ﾟДﾟ)[ﾟεﾟ]+(ﾟｰﾟ)+ ((o^</em>^o) - (ﾟΘﾟ))+ (ﾟДﾟ)[ﾟεﾟ]+(ﾟΘﾟ)+ (ﾟｰﾟ)+ ((o^<em>^o) +(o^</em>^o))+ (ﾟДﾟ)[ﾟεﾟ]+(ﾟΘﾟ)+ ((ﾟｰﾟ) + (ﾟΘﾟ))+ (ﾟｰﾟ)+ (ﾟДﾟ)[ﾟεﾟ]+(ﾟΘﾟ)+ (ﾟｰﾟ)+ (ﾟΘﾟ)+ (ﾟДﾟ)[ﾟεﾟ]+(ﾟΘﾟ)+ (ﾟｰﾟ)+ ((ﾟｰﾟ) + (o^<em>^o))+ (ﾟДﾟ)[ﾟεﾟ]+(ﾟΘﾟ)+ ((ﾟｰﾟ) + (o^</em>^o))+ (o^<em>^o)+ (ﾟДﾟ)[ﾟεﾟ]+(ﾟΘﾟ)+ ((ﾟｰﾟ) + (o^</em>^o))+ (ﾟΘﾟ)+ (ﾟДﾟ)[ﾟεﾟ]+(ﾟΘﾟ)+ ((ﾟｰﾟ) + (ﾟΘﾟ))+ ((ﾟｰﾟ) + (o^<em>^o))+ (ﾟДﾟ)[ﾟεﾟ]+(ﾟΘﾟ)+ ((o^</em>^o) +(o^<em>^o))+ ((ﾟｰﾟ) + (ﾟΘﾟ))+ (ﾟДﾟ)[ﾟεﾟ]+(ﾟΘﾟ)+ (o^</em>^o)+ ((ﾟｰﾟ) + (o^<em>^o))+ (ﾟДﾟ)[ﾟεﾟ]+(ﾟΘﾟ)+ (ﾟｰﾟ)+ (ﾟΘﾟ)+ (ﾟДﾟ)[ﾟεﾟ]+(ﾟΘﾟ)+ ((o^</em>^o) +(o^<em>^o))+ ((o^</em>^o) - (ﾟΘﾟ))+ (ﾟДﾟ)[ﾟεﾟ]+(ﾟΘﾟ)+ (ﾟｰﾟ)+ ((ﾟｰﾟ) + (ﾟΘﾟ))+ (ﾟДﾟ)[ﾟεﾟ]+(ﾟΘﾟ)+ (o^<em>^o)+ ((ﾟｰﾟ) + (o^</em>^o))+ (ﾟДﾟ)[ﾟεﾟ]+(ﾟΘﾟ)+ (ﾟｰﾟ)+ ((ﾟｰﾟ) + (o^<em>^o))+ (ﾟДﾟ)[ﾟεﾟ]+(ﾟΘﾟ)+ ((ﾟｰﾟ) + (ﾟΘﾟ))+ ((ﾟｰﾟ) + (o^</em>^o))+ (ﾟДﾟ)[ﾟεﾟ]+(ﾟΘﾟ)+ ((ﾟｰﾟ) + (ﾟΘﾟ))+ ((ﾟｰﾟ) + (o^<em>^o))+ (ﾟДﾟ)[ﾟεﾟ]+(ﾟΘﾟ)+ (ﾟｰﾟ)+ (ﾟｰﾟ)+ (ﾟДﾟ)[ﾟεﾟ]+(ﾟΘﾟ)+ ((ﾟｰﾟ) + (o^</em>^o))+ ((ﾟｰﾟ) + (ﾟΘﾟ))+ (ﾟДﾟ)[ﾟεﾟ]+(ﾟｰﾟ)+ ((o^<em>^o) - (ﾟΘﾟ))+ (ﾟДﾟ)[ﾟεﾟ]+((ﾟｰﾟ) + (ﾟΘﾟ))+ (ﾟΘﾟ)+ (ﾟДﾟ)[ﾟoﾟ]) (ﾟΘﾟ)) (‘</em>‘);</p>
+</blockquote>
+<hr>
+<h3 id="Solution-16"><a href="#Solution-16" class="headerlink" title="Solution"></a>Solution</h3><p>aaencode解密，在线网站<a href="https://www.qtool.net/decode" target="_blank" rel="noopener">https://www.qtool.net/decode</a></p>
+<hr>
+<h3 id="Flag-16"><a href="#Flag-16" class="headerlink" title="Flag"></a>Flag</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flag&#123;you_are_good&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Crypto8"><a href="#Crypto8" class="headerlink" title="Crypto8"></a>Crypto8</h2><h3 id="Description-17"><a href="#Description-17" class="headerlink" title="Description"></a>Description</h3><blockquote>
+<p>密文：</p>
+<p>Vm0weGQxTnRVWGxXYTFwUFZsZG9WRmxVU2xOalJsSlZWR3RPYW1KR1dqQmFSV1JIWVd4S2MxZHVhRlppVkVaSVdWWlZlRmRIVWpaVGJGcE9ZbTFvZVZZeFdtdFRNVnB5VFZaV1YySkdjSEJXTUZaTFYxWmFjVkpzV214U2F6VkpWbTEwYjFSc1duUmhSbWhhWWtaVmQxUlZXbHBsVlRGVlZXMXdhVlpzY0ZoV1JFWmhZekZrU0ZOc2FHeFNiRnBYV1ZSR1lWSXhVbk5TVkd4UlZWUXdPUT09</p>
+</blockquote>
+<hr>
+<h3 id="Solution-17"><a href="#Solution-17" class="headerlink" title="Solution"></a>Solution</h3><p>多次base64</p>
+<hr>
+<h3 id="Flag-17"><a href="#Flag-17" class="headerlink" title="Flag"></a>Flag</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flag&#123;Please_say_I_am_cool&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Crypto9"><a href="#Crypto9" class="headerlink" title="Crypto9"></a>Crypto9</h2><h3 id="Description-18"><a href="#Description-18" class="headerlink" title="Description"></a>Description</h3><blockquote>
+<p>题目：大胆尝试，你一定能猜到</p>
+<p> 明文-&gt;密钥-&gt;加密方式-&gt;密文</p>
+<p> 密文：YIXJMTS</p>
+<p>密钥：NEEPUNE</p>
+</blockquote>
+<hr>
+<h3 id="Solution-18"><a href="#Solution-18" class="headerlink" title="Solution"></a>Solution</h3><p>维吉尼亚密码</p>
+<hr>
+<h3 id="Flag-18"><a href="#Flag-18" class="headerlink" title="Flag"></a>Flag</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flag&#123;LETUSGO&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Crypto10-欢迎来到地狱"><a href="#Crypto10-欢迎来到地狱" class="headerlink" title="Crypto10 欢迎来到地狱"></a>Crypto10 欢迎来到地狱</h2><h3 id="Description-19"><a href="#Description-19" class="headerlink" title="Description"></a>Description</h3><blockquote>
+<p>一层层看吧</p>
+</blockquote>
+<hr>
+<h3 id="Solution-19"><a href="#Solution-19" class="headerlink" title="Solution"></a>Solution</h3><p>先修复jpg文件，得到百度网盘地址，得到<code>-.-/./-.--/-./././.--./..-/--./---</code>,解码<code>key neepugo</code>打开doc文档</p>
+<p>这里把word隐藏文字打开，进入<a href="http://www.atool9.com/steganography.php网站，对哈士奇图片进行解密" target="_blank" rel="noopener">http://www.atool9.com/steganography.php网站，对哈士奇图片进行解密</a></p>
+<p><code>key{you are in finally hell now}</code></p>
+<p>得到地狱大门，从图片分离出压缩包，一层层看</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">VTJGc2RHVmtYMS9QRk0vek9Sb2lleU53bndBVVo1ajBDSklUZ3VVaW85WUdQaXJkaDY3aTJRbVVidz09   --&gt;base64解密</span><br><span class="line">U2FsdGVkX1/PFM/zORoieyNwnwAUZ5j0CJITguUio9YGPirdh67i2QmUbw==                       --&gt;rabbit解密</span><br><span class="line">btonzxmnsnrjsijcnftonjonjdf       --&gt;凯撒解密 偏移5</span><br><span class="line">wojiushinimendexiaojiejieya</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="Flag-19"><a href="#Flag-19" class="headerlink" title="Flag"></a>Flag</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flag&#123;wojiushinimendexiaojiejieya&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="bbpy"><a href="#bbpy" class="headerlink" title="bbpy"></a>bbpy</h2><h3 id="Description-20"><a href="#Description-20" class="headerlink" title="Description"></a>Description</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import base64</span><br><span class="line">flag = ???</span><br><span class="line">bbs = str(base64.b32encode(flag), <span class="string">"utf-8"</span>)</span><br><span class="line"><span class="built_in">print</span>(bbs)</span><br><span class="line"><span class="comment">#bbs = 'MZWGCZ33OB4XI2DPNZRDMNDDOJ4XA4TPPU======'</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="Solution-20"><a href="#Solution-20" class="headerlink" title="Solution"></a>Solution</h3><p><strong>exp</strong>:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> base64</span><br><span class="line">bbs = <span class="string">'MZWGCZ33OB4XI2DPNZRDMNDDOJ4XA4TPPU======'</span></span><br><span class="line">flag = str(base64.b32decode(bbs), <span class="string">"utf-8"</span>)</span><br><span class="line">print(flag)</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="Flag-20"><a href="#Flag-20" class="headerlink" title="Flag"></a>Flag</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flag&#123;pythonb64crypro&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="first-RSA"><a href="#first-RSA" class="headerlink" title="first_RSA"></a>first_RSA</h2><h3 id="Description-21"><a href="#Description-21" class="headerlink" title="Description"></a>Description</h3><blockquote>
+<p>在一次RSA密钥对生成中，假设p=473398607161，q=4511491，e=17<br>求解出d作为flag提交</p>
+</blockquote>
+<hr>
+<h3 id="Solution-21"><a href="#Solution-21" class="headerlink" title="Solution"></a>Solution</h3><p>考rsa加密的定义</p>
+<p><strong>exp</strong>:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> gmpy2</span><br><span class="line">p = <span class="number">473398607161</span></span><br><span class="line">q = <span class="number">4511491</span></span><br><span class="line">e = <span class="number">17</span></span><br><span class="line">s = (p<span class="number">-1</span>)*(q<span class="number">-1</span>)</span><br><span class="line">d = gmpy2.invert(e,s)</span><br><span class="line">print(d)</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="Flag-21"><a href="#Flag-21" class="headerlink" title="Flag"></a>Flag</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flag&#123;125631357777427553&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="easy-RSA"><a href="#easy-RSA" class="headerlink" title="easy_RSA"></a>easy_RSA</h2><h3 id="Description-22"><a href="#Description-22" class="headerlink" title="Description"></a>Description</h3><blockquote>
+<p>考两个工具的使用，rsatools没研究明白怎么安装的qaq</p>
+</blockquote>
+<hr>
+<h3 id="Solution-22"><a href="#Solution-22" class="headerlink" title="Solution"></a>Solution</h3><p>用<code>openssl</code>提取公钥信息</p>
+<p>得到的Modulus（16）进制的转化为十进制 <a href="https://tool.lu/hexconvert/" target="_blank" rel="noopener">转换地址</a></p>
+<p>对数进行分解在线工具 <a href="http://www.factordb.com/" target="_blank" rel="noopener">在线分解</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">q = 275127860351348928173285174381581152299</span><br><span class="line">p = 319576316814478949870590164193048041239</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="Flag-22"><a href="#Flag-22" class="headerlink" title="Flag"></a>Flag</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">暂无</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="first-XOF"><a href="#first-XOF" class="headerlink" title="first_XOF"></a>first_XOF</h2><h3 id="Description-23"><a href="#Description-23" class="headerlink" title="Description"></a>Description</h3><blockquote>
+<p>无</p>
+</blockquote>
+<hr>
+<h3 id="Solution-23"><a href="#Solution-23" class="headerlink" title="Solution"></a>Solution</h3><p>python<a href="https://tool.lu/pyc/" target="_blank" rel="noopener">在线反编译</a></p>
+<p>python代码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> base64</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">encode</span><span class="params">(message)</span>:</span></span><br><span class="line">    s = <span class="string">''</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> message:</span><br><span class="line">        x = ord(i) ^ <span class="number">32</span></span><br><span class="line">        x = x + <span class="number">16</span></span><br><span class="line">        s += chr(x)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> base64.b64encode(s)</span><br><span class="line"></span><br><span class="line">correct = <span class="string">'XlNkVmtUI1MgXWBZXCFeKY+AaXNt'</span></span><br><span class="line">flag = <span class="string">''</span></span><br><span class="line"><span class="keyword">print</span> <span class="string">'Input flag:'</span></span><br><span class="line">flag = raw_input()</span><br><span class="line"><span class="keyword">if</span> encode(flag) == correct:</span><br><span class="line">    <span class="keyword">print</span> <span class="string">'correct'</span></span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="keyword">print</span> <span class="string">'wrong'</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>exp</strong>如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> base64</span><br><span class="line">correct = <span class="string">'XlNkVmtUI1MgXWBZXCFeKY+AaXNt'</span></span><br><span class="line">flag = base64.b64decode(correct)</span><br><span class="line">flag = list(flag)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(len(flag) - <span class="number">1</span>):</span><br><span class="line">    flag[i] = chr(ord(flag[i]) - <span class="number">16</span>)</span><br><span class="line">    flag[i] = chr(ord(flag[i]) ^ <span class="number">32</span>)</span><br><span class="line"><span class="keyword">print</span> <span class="string">''</span>.join(flag)</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="Flag-23"><a href="#Flag-23" class="headerlink" title="Flag"></a>Flag</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nctf&#123;d3c0mpil1n9_PyC&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="easy-XOF"><a href="#easy-XOF" class="headerlink" title="easy_XOF"></a>easy_XOF</h2><h3 id="Description-24"><a href="#Description-24" class="headerlink" title="Description"></a>Description</h3><blockquote>
+<p>无</p>
+</blockquote>
+<hr>
+<h3 id="Solution-24"><a href="#Solution-24" class="headerlink" title="Solution"></a>Solution</h3><p>反编译后代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> base64</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">encode1</span><span class="params">(ans)</span>:</span></span><br><span class="line">    s = <span class="string">''</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> ans:</span><br><span class="line">        x = ord(i) ^ <span class="number">36</span></span><br><span class="line">        x = x + <span class="number">25</span></span><br><span class="line">        s += chr(x)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> s</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">encode2</span><span class="params">(ans)</span>:</span></span><br><span class="line">    s = <span class="string">''</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> ans:</span><br><span class="line">        x = ord(i) + <span class="number">36</span></span><br><span class="line">        x = x ^ <span class="number">36</span></span><br><span class="line">        s += chr(x)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> s</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">encode3</span><span class="params">(ans)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> base64.b32encode(ans)</span><br><span class="line"></span><br><span class="line">flag = <span class="string">' '</span></span><br><span class="line"><span class="keyword">print</span> <span class="string">'Please Input your flag:'</span></span><br><span class="line">flag = raw_input()</span><br><span class="line">final = <span class="string">'UC7KOWVXWVNKNIC2XCXKHKK2W5NLBKNOUOSK3LNNVWW3E==='</span></span><br><span class="line"><span class="keyword">if</span> encode3(encode2(encode1(flag))) == final:</span><br><span class="line">    <span class="keyword">print</span> <span class="string">'correct'</span></span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="keyword">print</span> <span class="string">'wrong</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>exp</strong>如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> base64</span><br><span class="line">final = <span class="string">'UC7KOWVXWVNKNIC2XCXKHKK2W5NLBKNOUOSK3LNNVWW3E==='</span></span><br><span class="line">flag = base64.b32decode(final)</span><br><span class="line">flag = list(flag)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(len(flag)<span class="number">-1</span>):</span><br><span class="line">	flag[i] = ord(flag[i])^<span class="number">36</span></span><br><span class="line">	flag[i] = chr(flag[i]<span class="number">-36</span>)</span><br><span class="line">flag = list(flag)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(len(flag)<span class="number">-1</span>):</span><br><span class="line">	flag[i] = ord(flag[i])<span class="number">-25</span></span><br><span class="line">	flag[i] = chr(flag[i]^<span class="number">36</span>)</span><br><span class="line"><span class="keyword">print</span> <span class="string">''</span>.join(flag)</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="Flag-24"><a href="#Flag-24" class="headerlink" title="Flag"></a>Flag</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cyberpeace&#123;interestinghhhhh&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2020/01/21/%E3%80%90write%20up%E3%80%91%E5%9F%BA%E7%A1%80%E5%AF%86%E7%A0%81%E9%9A%90%E5%86%99/">【write up】基础密码隐写题</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">Pearce</a></p>
+        <p><span>发布时间:</span>2020-01-21, 00:14:00</p>
+        <p><span>最后更新:</span>2020-01-30, 22:01:28</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2020/01/21/%E3%80%90write%20up%E3%80%91%E5%9F%BA%E7%A1%80%E5%AF%86%E7%A0%81%E9%9A%90%E5%86%99/" title="【write up】基础密码隐写题">http://yoursite.com/2020/01/21/%E3%80%90write%20up%E3%80%91%E5%9F%BA%E7%A1%80%E5%AF%86%E7%A0%81%E9%9A%90%E5%86%99/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2020/01/21/%E3%80%90write%20up%E3%80%91%E5%9F%BA%E7%A1%80%E5%AF%86%E7%A0%81%E9%9A%90%E5%86%99/　　作者: Pearce" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2020/01/22/hexo%E9%97%AE%E9%A2%98/">
+                    hexo问题
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2020/01/20/zip%E5%8A%A0%E5%AF%86%E7%9A%84%E5%B8%B8%E8%A7%81%E7%A0%B4%E8%A7%A3%E6%96%B9%E6%B3%95/">
+                    zip加密的常见破解方法
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#隐写"><span class="toc-number">1.</span> <span class="toc-text">隐写</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#emmm…搜索一下试试看"><span class="toc-number">1.1.</span> <span class="toc-text">emmm…搜索一下试试看</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Description"><span class="toc-number">1.1.1.</span> <span class="toc-text">Description</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Solution"><span class="toc-number">1.1.2.</span> <span class="toc-text">Solution</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Flag"><span class="toc-number">1.1.3.</span> <span class="toc-text">Flag</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#大白有个大肚子"><span class="toc-number">1.2.</span> <span class="toc-text">大白有个大肚子</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Description-1"><span class="toc-number">1.2.1.</span> <span class="toc-text">Description</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Solution-1"><span class="toc-number">1.2.2.</span> <span class="toc-text">Solution</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Flag-1"><span class="toc-number">1.2.3.</span> <span class="toc-text">Flag</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#这真的是一个动图不信你一帧一帧看"><span class="toc-number">1.3.</span> <span class="toc-text">这真的是一个动图不信你一帧一帧看</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Description-2"><span class="toc-number">1.3.1.</span> <span class="toc-text">Description</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Solution-2"><span class="toc-number">1.3.2.</span> <span class="toc-text">Solution</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Flag-2"><span class="toc-number">1.3.3.</span> <span class="toc-text">Flag</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#相信我，图片下面什么都没有"><span class="toc-number">1.4.</span> <span class="toc-text">相信我，图片下面什么都没有</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Description-3"><span class="toc-number">1.4.1.</span> <span class="toc-text">Description</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Solution-3"><span class="toc-number">1.4.2.</span> <span class="toc-text">Solution</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Flag-3"><span class="toc-number">1.4.3.</span> <span class="toc-text">Flag</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#stegsolve1"><span class="toc-number">1.5.</span> <span class="toc-text">stegsolve1</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Description-4"><span class="toc-number">1.5.1.</span> <span class="toc-text">Description</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Solution-4"><span class="toc-number">1.5.2.</span> <span class="toc-text">Solution</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Flag-4"><span class="toc-number">1.5.3.</span> <span class="toc-text">Flag</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#stegsolve2"><span class="toc-number">1.6.</span> <span class="toc-text">stegsolve2</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Description-5"><span class="toc-number">1.6.1.</span> <span class="toc-text">Description</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Solution-5"><span class="toc-number">1.6.2.</span> <span class="toc-text">Solution</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Flag-5"><span class="toc-number">1.6.3.</span> <span class="toc-text">Flag</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#有点儿奇怪的码"><span class="toc-number">1.7.</span> <span class="toc-text">有点儿奇怪的码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Description-6"><span class="toc-number">1.7.1.</span> <span class="toc-text">Description</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Solution-6"><span class="toc-number">1.7.2.</span> <span class="toc-text">Solution</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Flag-6"><span class="toc-number">1.7.3.</span> <span class="toc-text">Flag</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#信安交响曲"><span class="toc-number">1.8.</span> <span class="toc-text">信安交响曲</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Description-7"><span class="toc-number">1.8.1.</span> <span class="toc-text">Description</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Solution-7"><span class="toc-number">1.8.2.</span> <span class="toc-text">Solution</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Flag-7"><span class="toc-number">1.8.3.</span> <span class="toc-text">Flag</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#foremost1"><span class="toc-number">1.9.</span> <span class="toc-text">foremost1</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Description-8"><span class="toc-number">1.9.1.</span> <span class="toc-text">Description</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Solution-8"><span class="toc-number">1.9.2.</span> <span class="toc-text">Solution</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Flag-8"><span class="toc-number">1.9.3.</span> <span class="toc-text">Flag</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#foremost2"><span class="toc-number">1.10.</span> <span class="toc-text">foremost2</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Description-9"><span class="toc-number">1.10.1.</span> <span class="toc-text">Description</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Solution-9"><span class="toc-number">1.10.2.</span> <span class="toc-text">Solution</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Flag-9"><span class="toc-number">1.10.3.</span> <span class="toc-text">Flag</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#密码"><span class="toc-number">2.</span> <span class="toc-text">密码</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Crypto1"><span class="toc-number">2.1.</span> <span class="toc-text">Crypto1</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Description-10"><span class="toc-number">2.1.1.</span> <span class="toc-text">Description</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Solution-10"><span class="toc-number">2.1.2.</span> <span class="toc-text">Solution</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Flag-10"><span class="toc-number">2.1.3.</span> <span class="toc-text">Flag</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Crypto2"><span class="toc-number">2.2.</span> <span class="toc-text">Crypto2</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Description-11"><span class="toc-number">2.2.1.</span> <span class="toc-text">Description</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Solution-11"><span class="toc-number">2.2.2.</span> <span class="toc-text">Solution</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Flag-11"><span class="toc-number">2.2.3.</span> <span class="toc-text">Flag</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Crypto3"><span class="toc-number">2.3.</span> <span class="toc-text">Crypto3</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Description-12"><span class="toc-number">2.3.1.</span> <span class="toc-text">Description</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Solution-12"><span class="toc-number">2.3.2.</span> <span class="toc-text">Solution</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Flag-12"><span class="toc-number">2.3.3.</span> <span class="toc-text">Flag</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Crypto4"><span class="toc-number">2.4.</span> <span class="toc-text">Crypto4</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Description-13"><span class="toc-number">2.4.1.</span> <span class="toc-text">Description</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Solution-13"><span class="toc-number">2.4.2.</span> <span class="toc-text">Solution</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Flag-13"><span class="toc-number">2.4.3.</span> <span class="toc-text">Flag</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Crypto5"><span class="toc-number">2.5.</span> <span class="toc-text">Crypto5</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Description-14"><span class="toc-number">2.5.1.</span> <span class="toc-text">Description</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Solution-14"><span class="toc-number">2.5.2.</span> <span class="toc-text">Solution</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Flag-14"><span class="toc-number">2.5.3.</span> <span class="toc-text">Flag</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Crypto6"><span class="toc-number">2.6.</span> <span class="toc-text">Crypto6</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Description-15"><span class="toc-number">2.6.1.</span> <span class="toc-text">Description</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Solution-15"><span class="toc-number">2.6.2.</span> <span class="toc-text">Solution</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Flag-15"><span class="toc-number">2.6.3.</span> <span class="toc-text">Flag</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Crypto7"><span class="toc-number">2.7.</span> <span class="toc-text">Crypto7</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Description-16"><span class="toc-number">2.7.1.</span> <span class="toc-text">Description</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Solution-16"><span class="toc-number">2.7.2.</span> <span class="toc-text">Solution</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Flag-16"><span class="toc-number">2.7.3.</span> <span class="toc-text">Flag</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Crypto8"><span class="toc-number">2.8.</span> <span class="toc-text">Crypto8</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Description-17"><span class="toc-number">2.8.1.</span> <span class="toc-text">Description</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Solution-17"><span class="toc-number">2.8.2.</span> <span class="toc-text">Solution</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Flag-17"><span class="toc-number">2.8.3.</span> <span class="toc-text">Flag</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Crypto9"><span class="toc-number">2.9.</span> <span class="toc-text">Crypto9</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Description-18"><span class="toc-number">2.9.1.</span> <span class="toc-text">Description</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Solution-18"><span class="toc-number">2.9.2.</span> <span class="toc-text">Solution</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Flag-18"><span class="toc-number">2.9.3.</span> <span class="toc-text">Flag</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Crypto10-欢迎来到地狱"><span class="toc-number">2.10.</span> <span class="toc-text">Crypto10 欢迎来到地狱</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Description-19"><span class="toc-number">2.10.1.</span> <span class="toc-text">Description</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Solution-19"><span class="toc-number">2.10.2.</span> <span class="toc-text">Solution</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Flag-19"><span class="toc-number">2.10.3.</span> <span class="toc-text">Flag</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#bbpy"><span class="toc-number">2.11.</span> <span class="toc-text">bbpy</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Description-20"><span class="toc-number">2.11.1.</span> <span class="toc-text">Description</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Solution-20"><span class="toc-number">2.11.2.</span> <span class="toc-text">Solution</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Flag-20"><span class="toc-number">2.11.3.</span> <span class="toc-text">Flag</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#first-RSA"><span class="toc-number">2.12.</span> <span class="toc-text">first_RSA</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Description-21"><span class="toc-number">2.12.1.</span> <span class="toc-text">Description</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Solution-21"><span class="toc-number">2.12.2.</span> <span class="toc-text">Solution</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Flag-21"><span class="toc-number">2.12.3.</span> <span class="toc-text">Flag</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#easy-RSA"><span class="toc-number">2.13.</span> <span class="toc-text">easy_RSA</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Description-22"><span class="toc-number">2.13.1.</span> <span class="toc-text">Description</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Solution-22"><span class="toc-number">2.13.2.</span> <span class="toc-text">Solution</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Flag-22"><span class="toc-number">2.13.3.</span> <span class="toc-text">Flag</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#first-XOF"><span class="toc-number">2.14.</span> <span class="toc-text">first_XOF</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Description-23"><span class="toc-number">2.14.1.</span> <span class="toc-text">Description</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Solution-23"><span class="toc-number">2.14.2.</span> <span class="toc-text">Solution</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Flag-23"><span class="toc-number">2.14.3.</span> <span class="toc-text">Flag</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#easy-XOF"><span class="toc-number">2.15.</span> <span class="toc-text">easy_XOF</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Description-24"><span class="toc-number">2.15.1.</span> <span class="toc-text">Description</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Solution-24"><span class="toc-number">2.15.2.</span> <span class="toc-text">Solution</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Flag-24"><span class="toc-number">2.15.3.</span> <span class="toc-text">Flag</span></a></li></ol></li></ol></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-4 i,
+        .toc-level-4 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"【write up】基础密码隐写题　| Pearce　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2020/01/22/hexo%E9%97%AE%E9%A2%98/" title="上一篇: hexo问题">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2020/01/20/zip%E5%8A%A0%E5%AF%86%E7%9A%84%E5%B8%B8%E8%A7%81%E7%A0%B4%E8%A7%A3%E6%96%B9%E6%B3%95/" title="下一篇: zip加密的常见破解方法">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2020/02/13/%E9%80%86%E5%90%91%E5%B7%A5%E5%85%B7/">逆向工具</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/12/%E3%80%90write%20up%E3%80%91%E9%80%86%E5%90%91%E5%9F%BA%E7%A1%80/">【write up】逆向基础</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/06/Pearce%E5%AD%A6%E4%B9%A0%E6%8A%A5%E5%91%8A%EF%BC%882%EF%BC%89/">Pearce学习报告(2)</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/05/%E3%80%90write%20up%E3%80%91%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cweb%E6%96%B0%E6%89%8B%E5%8C%BA/">【write up】攻防世界web新手区</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/25/%E5%AF%86%E7%A0%81/">密码</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/22/hexo%E9%97%AE%E9%A2%98/">hexo问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/21/%E3%80%90write%20up%E3%80%91%E5%9F%BA%E7%A1%80%E5%AF%86%E7%A0%81%E9%9A%90%E5%86%99/">【write up】基础密码隐写题</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/20/zip%E5%8A%A0%E5%AF%86%E7%9A%84%E5%B8%B8%E8%A7%81%E7%A0%B4%E8%A7%A3%E6%96%B9%E6%B3%95/">zip加密的常见破解方法</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/20/%E9%9A%90%E5%86%99/">隐写</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/19/Pearce%E5%AD%A6%E4%B9%A0%E6%8A%A5%E5%91%8A%EF%BC%881%EF%BC%89/">Pearce学习报告(1)</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/17/hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">hexo博客搭建</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/16/hello-world/">Hello world</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2016-2020 Pearce
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+					<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+    <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.6.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        $("a[target=_blank]").removeAttr("target");
+    
+</script>
+
+    <script>
+        var originTitle = document.title;
+        var titleTime;
+        document.addEventListener("visibilitychange", function() {
+            if (document.hidden) {
+                document.title = "(つェ⊂) 我藏好了哦~ " + originTitle;
+                clearTimeout(titleTime);
+            }
+            else {
+                document.title = "(*´∇｀*) 被你发现啦~ " + originTitle;
+                titleTime = setTimeout(function() {
+                    document.title = originTitle;
+                }, 2000);
+            }
+        })
+    </script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>

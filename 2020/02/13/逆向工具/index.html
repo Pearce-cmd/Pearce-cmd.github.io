@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="Pearce" />
+
+
+
+<meta name="description" content="逆向工具的使用">
+<meta property="og:type" content="article">
+<meta property="og:title" content="逆向工具">
+<meta property="og:url" content="http://yoursite.com/2020/02/13/%E9%80%86%E5%90%91%E5%B7%A5%E5%85%B7/index.html">
+<meta property="og:site_name" content="Pearce">
+<meta property="og:description" content="逆向工具的使用">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://23r3f.github.io/blog_img/1550328013216.png">
+<meta property="og:image" content="https://23r3f.github.io/blog_img/1550328121523.png">
+<meta property="og:image" content="https://23r3f.github.io/blog_img/1550328157247.png">
+<meta property="og:image" content="https://23r3f.github.io/blog_img/1550328361423.png">
+<meta property="og:image" content="https://23r3f.github.io/blog_img/1550328426148.png">
+<meta property="article:published_time" content="2020-02-12T16:14:00.000Z">
+<meta property="article:modified_time" content="2020-02-15T11:48:28.000Z">
+<meta property="article:author" content="Pearce">
+<meta property="article:tag" content="学习总结">
+<meta property="article:tag" content="逆向">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://23r3f.github.io/blog_img/1550328013216.png">
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="Pearce" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/favicon.png">
+
+
+
+    <link href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+
+<link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>逆向工具 | Pearce</title>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdnjs.cloudflare.com/ajax/libs/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: true
+    }
+</script>
+
+
+    <script>
+        yiliaConfig.jquery_ui = [true, "//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js", "//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.4/css/jquery-ui.min.css"];
+    </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/avatar.png" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">Pearce</a></h1>
+        </hgroup>
+
+        
+
+        
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="false" />
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class='no-result'>No results found <i class='fa fa-spinner fa-pulse'></i></p>
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="mailto:1219469416@qq.com" title="Email"></a>
+                            
+                                <a class="fa 网易云音乐" href="https://music.163.com/#/user/home?id=97423031" target="_blank" rel="noopener" title="网易云音乐"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/" rel="tag">web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/write-up/" rel="tag">write up</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zip%E5%8A%A0%E5%AF%86/" rel="tag">zip加密</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/" rel="tag">学习总结</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AF%86%E7%A0%81/" rel="tag">密码</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%80%86%E5%90%91/" rel="tag">逆向</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9A%90%E5%86%99/" rel="tag">隐写</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://hexo.io" target="_blank" rel="noopener">Hexo</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://pages.github.com/" target="_blank" rel="noopener">GitHub</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://moxfive.xyz/" target="_blank" rel="noopener">MOxFIVE</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">Pearce</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/avatar.png" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">Pearce</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:1219469416@qq.com" title="Email"></a>
+                            
+                                <a class="fa 网易云音乐" target="_blank" href="https://music.163.com/#/user/home?id=97423031" title="网易云音乐"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+</nav>
+      <div class="body-wrap"><article id="post-逆向工具" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/02/13/%E9%80%86%E5%90%91%E5%B7%A5%E5%85%B7/" class="article-date">
+      <time datetime="2020-02-12T16:14:00.000Z" itemprop="datePublished">2020-02-13</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      逆向工具
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/">学习总结</a><a class="article-category-link" href="/categories/%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/%E9%80%86%E5%90%91/">逆向</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/" rel="tag">学习总结</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%80%86%E5%90%91/" rel="tag">逆向</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>逆向工具的使用<a id="more"></a></p>
+<h2 id="IDA"><a href="#IDA" class="headerlink" title="IDA"></a>IDA</h2><h3 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h3><p>IDA中的快捷键都是和菜单栏的各个功能选项一一对应的，基本上你只要能在菜单栏上找到某个功能，也就能看到相应的快捷键，这里记录几个常用的：</p>
+<p>a：将数据转换为字符串</p>
+<p>f5：一键反汇编</p>
+<p>esc：回退键，能够倒回上一部操作的视图（只有在反汇编窗口才是这个作用，如果是在其他窗口按下esc，会关闭该窗口）</p>
+<p>shift+f12：可以打开string窗口，一键找出所有的字符串，右击setup，还能对窗口的属性进行设置</p>
+<p>ctrl+w：保存ida数据库</p>
+<p>ctrl+s：选择某个数据段，直接进行跳转</p>
+<p>ctrl+鼠标滚轮：能够调节流程视图的大小</p>
+<p>x：对着某个函数、变量按该快捷键，可以查看它的交叉引用</p>
+<p>g：直接跳转到某个地址</p>
+<p>n：更改变量的名称</p>
+<p>y：更改变量的类型</p>
+<p>/ ：在反编译后伪代码的界面中写下注释</p>
+<p>\：在反编译后伪代码的界面中隐藏/显示变量和函数的类型描述，有时候变量特别多的时候隐藏掉类型描述看起来会轻松很多</p>
+<p>；：在反汇编后的界面中写下注释</p>
+<p>ctrl+shift+w：拍摄IDA快照</p>
+<p>u：undefine，取消定义函数、代码、数据的定义</p>
+<h3 id="拍摄快照"><a href="#拍摄快照" class="headerlink" title="拍摄快照"></a>拍摄快照</h3><p>由于IDA不提供撤销的功能，如果你不小心按到某个键，导致ida数据库发生了改变，就得重新来过，所以要记得在经常操作的时候，加上快照：file–&gt;take database snapshot<br>加完快照后，会生成一个新的ida数据库文件，本质上是有点像另存的操作</p>
+<p>快捷键：ctrl+shift+w</p>
+<h3 id="菜单栏常用设置"><a href="#菜单栏常用设置" class="headerlink" title="菜单栏常用设置"></a>菜单栏常用设置</h3><p>view–&gt;open subviews: 可以恢复你无意中关闭的数据显示窗口</p>
+<p>windows–&gt;reset desktop: 可以恢复初始ida布局</p>
+<p>option–&gt;font: 可以改变字体的相关属性</p>
+<h3 id="在流程视图中添加地址偏移"><a href="#在流程视图中添加地址偏移" class="headerlink" title="在流程视图中添加地址偏移"></a>在流程视图中添加地址偏移</h3><p>IDA中的流程视图可以说是非常的好用，简单明了地能看出程序的执行流程，尤其是在看if分支代码和循环代码的时候，能够非常直观</p>
+<p><a href="https://23r3f.github.io/blog_img/1550328013216.png" target="_blank" rel="noopener"><img src="https://23r3f.github.io/blog_img/1550328013216.png" alt="1550328013216"></a></p>
+<p>但是，我们还可以改得更加好用，在这个视图中添加地址偏移的话，我们取地址就非常方便，不再需要按空格切换视图去找，在菜单栏中设置：option–&gt;general</p>
+<p><a href="https://23r3f.github.io/blog_img/1550328121523.png" target="_blank" rel="noopener"><img src="https://23r3f.github.io/blog_img/1550328121523.png" alt="1550328121523"></a></p>
+<p>将该选项打钩后就可以看到效果了：</p>
+<p><a href="https://23r3f.github.io/blog_img/1550328157247.png" target="_blank" rel="noopener"><img src="https://23r3f.github.io/blog_img/1550328157247.png" alt="1550328157247"></a></p>
+<h3 id="自动添加反汇编注释"><a href="#自动添加反汇编注释" class="headerlink" title="自动添加反汇编注释"></a>自动添加反汇编注释</h3><p>这个功能对于萌新来说非常友好，在刚刚初学汇编的时候， 难免遇到几个不常用的蛇皮汇编指令，就得自己一个个去查，很麻烦，开启了自动注释的功能后，IDA就可以直接告诉你汇编指令的意思</p>
+<p>同样是在菜单栏中设置：option–&gt;general</p>
+<p><a href="https://23r3f.github.io/blog_img/1550328361423.png" target="_blank" rel="noopener"><img src="https://23r3f.github.io/blog_img/1550328361423.png" alt="1550328361423"></a></p>
+<p> 效果如下：</p>
+<p><a href="https://23r3f.github.io/blog_img/1550328426148.png" target="_blank" rel="noopener"><img src="https://23r3f.github.io/blog_img/1550328426148.png" alt="1550328426148"></a></p>
+<blockquote>
+<p>更多详见<a href="https://23r3f.github.io/2019/02/15/IDA%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7%E6%80%BB%E7%BB%93/" target="_blank" rel="noopener">https://23r3f.github.io/2019/02/15/IDA%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7%E6%80%BB%E7%BB%93/</a></p>
+</blockquote>
+<h2 id="OllyDbg"><a href="#OllyDbg" class="headerlink" title="OllyDbg"></a>OllyDbg</h2><h3 id="快捷键-1"><a href="#快捷键-1" class="headerlink" title="快捷键"></a>快捷键</h3><p>Ctrl+F2 - 重启程序，即重新启动被调试程序。如果当前没有调试的程序，OllyDbg会运行历史列表［history </p>
+<p>list］中的第一个程序。程序重启后，将会删除所有内存断点和硬件断点。</p>
+<p>译者注：从实际使用效果看，硬件断点在程序重启后并没有移除。</p>
+<p> Alt+F2 - 关闭，即关闭被调试程序。如果程序仍在运行，会弹出一个提示信息，询问您是否要关闭程序。</p>
+<p>F3 - 弹出“打开32位.EXE文件”对话框［Open 32-bit .EXE file］，您可以选择可执行文件，并可以输入运行参数。</p>
+<p>Alt+F5 - </p>
+<p>让OllyDbg总在最前面。如果被调试程序在某个断点处发生中断，而这时调试程序弹出一个总在最前面的窗口（一般为模式消息或模式对话框［modal message</p>
+<p>or dialog］），它可能会遮住OllyDbg的一部分，但是我们又不能移动最小化这个窗口。激活OllyDbg（比如按任务栏上的标签）并按 </p>
+<p>Alt+F5，OllyDbg将设置成总在最前面，会反过来遮住刚才那个窗口。如果您再按一下Alt+F5，OllyDbg会恢复到正常状态。 </p>
+<p>OllyDbg是否处于总在最前面状态，将会保存，在下一次调试时依然有效。当前是否处于总在最前面状态，会显示在状态栏中。</p>
+<p> F7 - </p>
+<p>单步步入到下一条命令，如果当前命令是一个函数［Call］，则会停在这个函数体的第一条命令上。如果当前命令是是含有REP前缀，则只执行一次重复操作。</p>
+<p> Shift+F7 - </p>
+<p>与F7相同，但是如果被调试程序发生异常而中止，调试器会首先尝试步入被调试程序指定的异常处理（请参考忽略Kernel32中的内存非法访问）。</p>
+<p> Ctrl+F7 - </p>
+<p>自动步入，在所有的函数调用中一条一条地执行命令（就像您按住F7键不放一样，只是更快一些）。当您执行其他一些单步命令，或者程序到达断点，或者发生异常时，自动步入过程都会停止。每次单步步入，OllyDbg都会更新所有的窗口。所以为了提高自动步入的速度，请您关闭不必要成窗口，对于保留的窗口最好尽量的小。按Esc键，可以停止自动步入。</p>
+<p>F8 - </p>
+<p>单步步过到下一条命令。如果当前命令是一个函数，则一次执行完这个函数（除非这个函数内部包含断点，或发生了异常）。如果当前命令是含有REP前缀，则会执行完重复操作，并停在下一条命令上。</p>
+<p>Shift+F8 - </p>
+<p>与F8相同，但是如果被调试程序发生异常而中止，调试器会首先尝试步过被调试程序指定的异常处理（请参考忽略Kernel32中的内存非法访问）。</p>
+<p>Ctrl+F8 - </p>
+<p>自动步过，一条一条的执行命令，但并不进入函数调用内部（就像您按住F8键不放一样，只是更快一些）。当您执行其他一些单步命令，或者程序到达断点，或者发生异常时，自动步过过程都会停止。每次单步步过，OllyDbg都会更新所有的窗口。所以为了提高自动步过的速度，请您关闭不必要成窗口，对于保留的窗口最好尽量的小。按Esc键，可以停止自动步过。</p>
+<p>F9 - 让程序继续执行。</p>
+<p> Shift+F9 - </p>
+<p>与F9相同，但是如果被调试程序发生异常而中止，调试器会首先尝试执行被调试程序指定的异常处理（请参考忽略Kernel32中的内存非法访问）。</p>
+<p>Ctrl+F9 - </p>
+<p>执行直到返回，跟踪程序直到遇到返回，在此期间不进入子函数也不更新CPU数据。因为程序是一条一条命令执行的，所以速度可能会慢一些。按Esc键，可以停止跟踪。</p>
+<p>Alt+F9 - </p>
+<p>执行直到返回到用户代码段，跟踪程序直到指令所属于的模块不在系统目录中，在此期间不进入子函数也不更新CPU数据。因为程序是一条一条执行的，所以速度可能会慢一些。按Esc键，可以停止跟踪。</p>
+<p>Ctrl+F11 </p>
+<p>-Run跟踪步入，一条一条执行命令，进入每个子函数调用，并把寄存器的信息加入到Run跟踪的存储数据中。Run跟踪不会同步更新CPU窗口。</p>
+<p>F12 - 停止程序执行，同时暂停被调试程序的所有线程。请不要手动恢复线程运行，最好使用继续执行快捷键或菜单选项（像 F9）。</p>
+<p>Ctrl+F12 - Run跟踪 </p>
+<p>步过，一条一条执行命令，但是不进入子函数调用，，并把寄存器的信息加入到Run跟踪的存储数据中。Run跟踪不会同步更新CPU窗口。</p>
+<p>Esc - 如果当前处于自动运行或跟踪状态，则停止自动运行或跟踪；如果CPU显示的是跟踪数据，则显示真实数据。</p>
+<p>Alt+B - 显示断点窗口。在这个窗口中，您可以编辑、删除、或跟进到断点处。 </p>
+<p>Alt+C - 显示CPU窗口。</p>
+<p>Alt+E - 显示模块列表［list of modules］。</p>
+<p>Alt+K - 显示调用栈［Call stack］窗口。</p>
+<p>Alt+L - 显示日志窗口。</p>
+<p>Alt+M - 显示内存窗口。</p>
+<p>Alt+O - 显示选项对话框［Options dialog］</p>
+<p>Ctrl+P - 显示补丁窗口。</p>
+<p>Ctrl+T - 打开 暂停 Run跟踪 对话框</p>
+<p>Alt+X - 关闭 OllyDbg。</p>
+<p>大多数窗口都支持以下的键盘命令：</p>
+<p>Alt+F3 - 关闭当前窗口。</p>
+<p>c.&amp;vWmLSGE </p>
+<p>Ctrl+F4 - 关闭当前窗口。 </p>
+<p>F5 - 最大化当前窗口或将当前窗口大小改为正常化。</p>
+<p>F6 - 切换到下一个窗口。</p>
+<p>Shift+F6 - 切换到前一个窗口。</p>
+<p>F10 - 打开与当前窗口或面板相关的快捷菜单。</p>
+<p>左方向键 - 显示窗口左方一个字节宽度的内容。</p>
+<p>Ctrl+左方向键 - 显示窗口左方一栏的内容。</p>
+<p>右方向键 - 显示窗口右方一个字节宽度的内容</p>
+<p> Ctrl+右方向键 - 显示窗口右方一栏的内容</p>
+<p>反汇编窗口中的快捷键［Disassembler shortcuts］</p>
+<p>当CPU窗口中的反汇编面板［Disassembler pane］处于激活状态时，您可以使用以下快捷键：</p>
+<p>回车键 - 将选中的命令添加到命令历史［command history］中，如果当前命令是一个跳转、函数或者是转换表的一个部分，则进入到目的地址。</p>
+<p>退格键 - 移除选中部分的自动分析信息。如果分析器将代码误识别为数据，这个快捷键就非常有用。请参考解码提示［decoding hints］. </p>
+<p> Alt+退格键 - 撤消所选部分的修改，以备份数据的相应内容替换所选部分。仅当备份数据存在且与所选部分不同时可用。</p>
+<p> Ctrl+F1 -如果API帮助文件已经选择，将打开与首个选择行内的符号名相关联的帮助主题。</p>
+<p>F2 -在首个选择的命令上开关INT3 断点［Breakpoint］，也可以双击该行第二列。</p>
+<p>Shift+F2 -在首个选择命令设置条件断点，参见忽略Kernel32中内存访问异常［Ignore memory access violations </p>
+<p>in Kernel32］。</p>
+<p>F4 </p>
+<p>-执行到所选行，在首个选择的命令上设置一次性断点，然后继续执行调试程序，直到OllyDbg捕获到异常或者停止在该断点上。在程序执行到该命令之前，该一次性断点一直有效。如有必要，可在断点窗口［Breakpoints</p>
+<p>window］中删除它。</p>
+<p>Shift+F4 -设置记录断点（一种条件断点，当条件满足时一些表达式的值会记录下来）， 详情参见断点［Breakpoint］。</p>
+<p>Ctrl+F5 -打开与首个选择的命令相对应的源文件。</p>
+<p> Alt+F7 -转到上一个找到的参考。</p>
+<p>Alt+F8 -转到下一个找到参考。</p>
+<p>Ctrl+A -分析当前模块的代码段。</p>
+<p> Ctrl+B - 开始二进制搜索。</p>
+<p>Ctrl+C -复制所选内容到剪贴板。复制时会简单地按列宽截断不可见内容，如果希望排除不需要的列，可把这些列的宽度调整到最小。</p>
+<p>Ctrl+E -以二进制（十六进制）格式编辑所选内容。</p>
+<p>Ctrl+F -开始命令搜索。</p>
+<p>Ctrl+G -转到某地址。该命令将弹出输入地址或表达式的窗口。该命令不会修改 EIP。</p>
+<p> Ctrl+J -列出所有的涉及到该位置的调用和跳转，在您用这个功能之前，您必须使用分析代码功能。</p>
+<p>Ctrl+K - 查看与当前函数相关的调用树［Call tree］。在您用这个功能之前，您必须使用分析代码功能。</p>
+<p> Ctrl+L - 搜索下一个，重复上一次的搜索内容。</p>
+<p>Ctrl+N - 打开当前模块的名称（标签）列表。</p>
+<p> Ctrl+O - </p>
+<p>扫描object文件。扫描Object文件。该命令会显示扫描Object文件对话框，您可以在该对话框中选择Object文件或者lib文件，并扫描这个文件，试图找到在实际代码段中用到的目标模块。</p>
+<p>Ctrl+R </p>
+<p>-搜索所选命令的参考。该命令扫描激活模块的全部可执行代码，以找到涉及到首个选中的命令的全部相关参考（包括：常量、跳转及调用），您可以在参考中使用快捷键 </p>
+<p>Alt+F7 和 Alt+F8来浏览这些参考。为便于您使用，被参考的命令也包含在该列表中。</p>
+<p> Ctrl+S -命令搜索。该命令显示命令查找［Find command］对话框供您输入汇编命令，并从当前命令开始搜索。</p>
+<p>星号［Asterisk］(*) -转到原始位置（激活线程的EIP处）。</p>
+<p> Ctrl+星号(*) - 指定新的起始位置，设置当前所选线程的EIP为首个选择字节的地址。您可以在选择EIP并撤消该操作。</p>
+<p> 加号［Plus］(+) -如果run跟踪［run trace］ 没有激活，则根据命令历史［command </p>
+<p>history］跳到下一条运行过命令的地方；否则跳到Run跟踪的下一个记录。</p>
+<p>Ctrl+加号 - 跳到前一个函数开始处。（注意只是跳到，并不执行）</p>
+<p> 减号［Minus］(-) - 如果run跟踪［run trace］ 没有激活，则根据命令历史［command </p>
+<p>history］跳到前一条运行过命令的地方；否则跳到Run跟踪的前一个记录。</p>
+<p> Ctrl+减号 - 跳到下一个函数开始处。（注意只是跳到，并不执行）</p>
+<p>空格［Space］ - </p>
+<p>修改命令。您可在显示对话框中以汇编语言修改实际指令或输入新指令，这些指令将替换实际代码，您也可以在想要修改的指令处双击鼠标。</p>
+<p>冒号［Colon］( - 添加标签。显示添加标签窗口［Add label］或修改标签窗口［Change </p>
+<p>label］，您可在此输入与首个选择的命令中的第一个字节相关联的标签（符号名）。注意，在多种编程语言中，冒号可以是标签的一部分。</p>
+<p> 分号［Semicolon］(;) - 添加注释［comment］。显示添加注释窗口［Add label］或修改注释窗口［Change </p>
+<p>label］，您可在此输入与首条所选命令的第一个字节相关联的注释（注释串会显示在最后一列中）。注意，多种汇编语言使用分号作为注释开始。您也可以在注释列双击需要注释的命令行。</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2020/02/13/%E9%80%86%E5%90%91%E5%B7%A5%E5%85%B7/">逆向工具</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">Pearce</a></p>
+        <p><span>发布时间:</span>2020-02-13, 00:14:00</p>
+        <p><span>最后更新:</span>2020-02-15, 19:48:28</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2020/02/13/%E9%80%86%E5%90%91%E5%B7%A5%E5%85%B7/" title="逆向工具">http://yoursite.com/2020/02/13/%E9%80%86%E5%90%91%E5%B7%A5%E5%85%B7/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2020/02/13/%E9%80%86%E5%90%91%E5%B7%A5%E5%85%B7/　　作者: Pearce" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2020/02/12/%E3%80%90write%20up%E3%80%91%E9%80%86%E5%90%91%E5%9F%BA%E7%A1%80/">
+                    【write up】逆向基础
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#IDA"><span class="toc-number">1.</span> <span class="toc-text">IDA</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#快捷键"><span class="toc-number">1.1.</span> <span class="toc-text">快捷键</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#拍摄快照"><span class="toc-number">1.2.</span> <span class="toc-text">拍摄快照</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#菜单栏常用设置"><span class="toc-number">1.3.</span> <span class="toc-text">菜单栏常用设置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#在流程视图中添加地址偏移"><span class="toc-number">1.4.</span> <span class="toc-text">在流程视图中添加地址偏移</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#自动添加反汇编注释"><span class="toc-number">1.5.</span> <span class="toc-text">自动添加反汇编注释</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#OllyDbg"><span class="toc-number">2.</span> <span class="toc-text">OllyDbg</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#快捷键-1"><span class="toc-number">2.1.</span> <span class="toc-text">快捷键</span></a></li></ol></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-4 i,
+        .toc-level-4 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"逆向工具　| Pearce　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2020/02/12/%E3%80%90write%20up%E3%80%91%E9%80%86%E5%90%91%E5%9F%BA%E7%A1%80/" title="下一篇: 【write up】逆向基础">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2020/02/13/%E9%80%86%E5%90%91%E5%B7%A5%E5%85%B7/">逆向工具</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/12/%E3%80%90write%20up%E3%80%91%E9%80%86%E5%90%91%E5%9F%BA%E7%A1%80/">【write up】逆向基础</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/06/Pearce%E5%AD%A6%E4%B9%A0%E6%8A%A5%E5%91%8A%EF%BC%882%EF%BC%89/">Pearce学习报告(2)</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/05/%E3%80%90write%20up%E3%80%91%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cweb%E6%96%B0%E6%89%8B%E5%8C%BA/">【write up】攻防世界web新手区</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/25/%E5%AF%86%E7%A0%81/">密码</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/22/hexo%E9%97%AE%E9%A2%98/">hexo问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/21/%E3%80%90write%20up%E3%80%91%E5%9F%BA%E7%A1%80%E5%AF%86%E7%A0%81%E9%9A%90%E5%86%99/">【write up】基础密码隐写题</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/20/zip%E5%8A%A0%E5%AF%86%E7%9A%84%E5%B8%B8%E8%A7%81%E7%A0%B4%E8%A7%A3%E6%96%B9%E6%B3%95/">zip加密的常见破解方法</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/20/%E9%9A%90%E5%86%99/">隐写</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/19/Pearce%E5%AD%A6%E4%B9%A0%E6%8A%A5%E5%91%8A%EF%BC%881%EF%BC%89/">Pearce学习报告(1)</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/17/hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">hexo博客搭建</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/16/hello-world/">Hello world</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2016-2020 Pearce
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+					<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+    <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.6.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        $("a[target=_blank]").removeAttr("target");
+    
+</script>
+
+    <script>
+        var originTitle = document.title;
+        var titleTime;
+        document.addEventListener("visibilitychange", function() {
+            if (document.hidden) {
+                document.title = "(つェ⊂) 我藏好了哦~ " + originTitle;
+                clearTimeout(titleTime);
+            }
+            else {
+                document.title = "(*´∇｀*) 被你发现啦~ " + originTitle;
+                titleTime = setTimeout(function() {
+                    document.title = originTitle;
+                }, 2000);
+            }
+        })
+    </script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>

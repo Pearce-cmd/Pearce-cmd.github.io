@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="Pearce" />
+
+
+
+<meta name="description" content="第一次写逆向题，不会的先码着，留着以后写">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【write up】逆向基础">
+<meta property="og:url" content="http://yoursite.com/2020/02/12/%E3%80%90write%20up%E3%80%91%E9%80%86%E5%90%91%E5%9F%BA%E7%A1%80/index.html">
+<meta property="og:site_name" content="Pearce">
+<meta property="og:description" content="第一次写逆向题，不会的先码着，留着以后写">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://pearceimg.oss-cn-beijing.aliyuncs.com/%E3%80%90write%20up%E3%80%91%E9%80%86%E5%90%91%E5%9F%BA%E7%A1%80/ascii.png">
+<meta property="og:image" content="https://pearceimg.oss-cn-beijing.aliyuncs.com/%E3%80%90write%20up%E3%80%91%E9%80%86%E5%90%91%E5%9F%BA%E7%A1%80/%E7%AE%80%E5%8D%95%E7%9A%84%E7%AE%97%E6%B3%951.png">
+<meta property="og:image" content="https://pearceimg.oss-cn-beijing.aliyuncs.com/%E3%80%90write%20up%E3%80%91%E9%80%86%E5%90%91%E5%9F%BA%E7%A1%80/%E7%AE%80%E5%8D%95%E7%9A%84%E7%AE%97%E6%B3%952.png">
+<meta property="og:image" content="https://pearceimg.oss-cn-beijing.aliyuncs.com/%E3%80%90write%20up%E3%80%91%E9%80%86%E5%90%91%E5%9F%BA%E7%A1%80/%E7%AE%80%E5%8D%95%E7%9A%84%E7%AE%97%E6%B3%953.png">
+<meta property="og:image" content="https://pearceimg.oss-cn-beijing.aliyuncs.com/%E3%80%90write%20up%E3%80%91%E9%80%86%E5%90%91%E5%9F%BA%E7%A1%80/%E4%BD%A0%E7%AE%97%E4%BB%80%E4%B9%881.png">
+<meta property="og:image" content="https://pearceimg.oss-cn-beijing.aliyuncs.com/%E3%80%90write%20up%E3%80%91%E9%80%86%E5%90%91%E5%9F%BA%E7%A1%80/%E4%BD%A0%E7%AE%97%E4%BB%80%E4%B9%882.png">
+<meta property="article:published_time" content="2020-02-11T16:14:00.000Z">
+<meta property="article:modified_time" content="2020-02-15T11:56:20.000Z">
+<meta property="article:author" content="Pearce">
+<meta property="article:tag" content="write up">
+<meta property="article:tag" content="逆向">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pearceimg.oss-cn-beijing.aliyuncs.com/%E3%80%90write%20up%E3%80%91%E9%80%86%E5%90%91%E5%9F%BA%E7%A1%80/ascii.png">
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="Pearce" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/favicon.png">
+
+
+
+    <link href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+
+<link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>【write up】逆向基础 | Pearce</title>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdnjs.cloudflare.com/ajax/libs/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: true
+    }
+</script>
+
+
+    <script>
+        yiliaConfig.jquery_ui = [true, "//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js", "//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.4/css/jquery-ui.min.css"];
+    </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/avatar.png" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">Pearce</a></h1>
+        </hgroup>
+
+        
+
+        
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="false" />
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class='no-result'>No results found <i class='fa fa-spinner fa-pulse'></i></p>
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="mailto:1219469416@qq.com" title="Email"></a>
+                            
+                                <a class="fa 网易云音乐" href="https://music.163.com/#/user/home?id=97423031" target="_blank" rel="noopener" title="网易云音乐"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/" rel="tag">web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/write-up/" rel="tag">write up</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zip%E5%8A%A0%E5%AF%86/" rel="tag">zip加密</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/" rel="tag">学习总结</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AF%86%E7%A0%81/" rel="tag">密码</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%80%86%E5%90%91/" rel="tag">逆向</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9A%90%E5%86%99/" rel="tag">隐写</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://hexo.io" target="_blank" rel="noopener">Hexo</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://pages.github.com/" target="_blank" rel="noopener">GitHub</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://moxfive.xyz/" target="_blank" rel="noopener">MOxFIVE</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">Pearce</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/avatar.png" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">Pearce</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:1219469416@qq.com" title="Email"></a>
+                            
+                                <a class="fa 网易云音乐" target="_blank" href="https://music.163.com/#/user/home?id=97423031" title="网易云音乐"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+</nav>
+      <div class="body-wrap"><article id="post-【write up】逆向基础" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/02/12/%E3%80%90write%20up%E3%80%91%E9%80%86%E5%90%91%E5%9F%BA%E7%A1%80/" class="article-date">
+      <time datetime="2020-02-11T16:14:00.000Z" itemprop="datePublished">2020-02-12</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      【write up】逆向基础
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/write-up/">write up</a><a class="article-category-link" href="/categories/write-up/%E9%80%86%E5%90%91/">逆向</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/write-up/" rel="tag">write up</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%80%86%E5%90%91/" rel="tag">逆向</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>第一次写逆向题，不会的先码着，留着以后写<a id="more"></a></p>
+<h2 id="ascll码转字符串"><a href="#ascll码转字符串" class="headerlink" title="ascll码转字符串"></a>ascll码转字符串</h2><h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><blockquote>
+<p>无</p>
+</blockquote>
+<hr>
+<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><p>ida32位打开，直接看汇编，不要F5</p>
+<img src="https://pearceimg.oss-cn-beijing.aliyuncs.com/%E3%80%90write%20up%E3%80%91%E9%80%86%E5%90%91%E5%9F%BA%E7%A1%80/ascii.png" style="zoom:50%;" />
+
+<hr>
+<h3 id="Flag"><a href="#Flag" class="headerlink" title="Flag"></a>Flag</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flag&#123;sAdf_fDdkl_Fdf&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="linux可执行文件-异或"><a href="#linux可执行文件-异或" class="headerlink" title="linux可执行文件 异或"></a>linux可执行文件 异或</h2><h3 id="Description-1"><a href="#Description-1" class="headerlink" title="Description"></a>Description</h3><blockquote>
+<p>无</p>
+</blockquote>
+<hr>
+<h3 id="Solution-1"><a href="#Solution-1" class="headerlink" title="Solution"></a>Solution</h3><p>IDA64位</p>
+<p><code>main:</code></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> __fastcall __noreturn <span class="title">main</span><span class="params">(__int64 a1, <span class="keyword">char</span> **a2, <span class="keyword">char</span> **a3)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">size_t</span> v3; <span class="comment">// rsi@1</span></span><br><span class="line">  <span class="keyword">int</span> i; <span class="comment">// [sp+3Ch] [bp-54h]@3</span></span><br><span class="line">  <span class="keyword">char</span> s[<span class="number">36</span>]; <span class="comment">// [sp+40h] [bp-50h]@1</span></span><br><span class="line">  <span class="keyword">int</span> v6; <span class="comment">// [sp+64h] [bp-2Ch]@1</span></span><br><span class="line">  __int64 v7; <span class="comment">// [sp+68h] [bp-28h]@1</span></span><br><span class="line">  <span class="keyword">char</span> v8[<span class="number">8</span>]; <span class="comment">// [sp+70h] [bp-20h]@1</span></span><br><span class="line">  <span class="keyword">int</span> v9; <span class="comment">// [sp+8Ch] [bp-4h]@1</span></span><br><span class="line"></span><br><span class="line">  v9 = <span class="number">0</span>;</span><br><span class="line">  <span class="built_in">strcpy</span>(v8, <span class="string">":\"AL_RT^L*.?+6/46"</span>);</span><br><span class="line">  v7 = <span class="number">28537194573619560L</span>L;</span><br><span class="line">  v6 = <span class="number">7</span>;</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">"Welcome to the RC3 secure password guesser.\n"</span>, a2, a3);</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">"To continue, you must enter the correct password.\n"</span>);</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">"Enter your guess: "</span>);</span><br><span class="line">  __isoc99_scanf(<span class="string">"%32s"</span>, s);</span><br><span class="line">  v3 = <span class="built_in">strlen</span>(s);</span><br><span class="line">  <span class="keyword">if</span> ( v3 &lt; <span class="built_in">strlen</span>(v8) )</span><br><span class="line">    sub_4007C0();</span><br><span class="line">  <span class="keyword">for</span> ( i = <span class="number">0</span>; i &lt; <span class="built_in">strlen</span>(s); ++i )</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">if</span> ( i &gt;= <span class="built_in">strlen</span>(v8) )</span><br><span class="line">      sub_4007C0();</span><br><span class="line">    <span class="keyword">if</span> ( s[i] != (<span class="keyword">char</span>)(*((_BYTE *)&amp;v7 + i % v6) ^ v8[i]) )</span><br><span class="line">      sub_4007C0();</span><br><span class="line">  &#125;</span><br><span class="line">  sub_4007F0();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>sub_4007C0();</code></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> __noreturn <span class="title">sub_4007C0</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">"Incorrect password!\n"</span>);</span><br><span class="line">  <span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>sub_4007F0():</code></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> __noreturn <span class="title">sub_4007F0</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">"You entered the correct password!\nGreat job!\n"</span>);</span><br><span class="line">  <span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>主要逻辑就是将字符串<code>:\&quot;AL_RT^L*.?+6/46</code>复制给<code>V8</code>，如果输入的字符串长度大于<code>v8</code>则进入下面的循环</p>
+<p><code>if ( s[i] != (char)(*((_BYTE *)&amp;v7 + i % v6) ^ v8[i]) )</code>是得flag的关键</p>
+<p><strong>exp:</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">v8 = <span class="string">":\"AL_RT^L*.?+6/46"</span></span><br><span class="line">v7 = <span class="string">"28537194573619560"</span></span><br><span class="line">v6 = <span class="number">7</span></span><br><span class="line">flag = <span class="string">""</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>,len(v8)):</span><br><span class="line">    flag += chr(ord(v8[i])^ord(v7[i%v6]))</span><br><span class="line"><span class="keyword">print</span> (flag)</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="Flag-1"><a href="#Flag-1" class="headerlink" title="Flag"></a>Flag</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flag&#123;RC3-2016-XORISGUD&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="猜猜哪个是flag"><a href="#猜猜哪个是flag" class="headerlink" title="猜猜哪个是flag"></a>猜猜哪个是flag</h2><h3 id="Description-2"><a href="#Description-2" class="headerlink" title="Description"></a>Description</h3><blockquote>
+<p>这题程序打不开，提示丢失什么文件，ida里面也有问题 不能F5 也没有main函数 不过给了一个c程序  差不多能猜出来题目是啥  </p>
+</blockquote>
+<hr>
+<h3 id="Solution-2"><a href="#Solution-2" class="headerlink" title="Solution"></a>Solution</h3><p>这题目还挺良心，脚本都给了</p>
+<p>这个flag的长度是大于25的，<code>flag{WWtFal9kamtmM19qRWpfZVVu}</code>可以看出是base64编码过的</p>
+<hr>
+<h3 id="Flag-2"><a href="#Flag-2" class="headerlink" title="Flag"></a>Flag</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flag&#123;YkEj_djkf3_jEj_eUn&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="简单的算法"><a href="#简单的算法" class="headerlink" title="简单的算法"></a>简单的算法</h2><h3 id="Description-3"><a href="#Description-3" class="headerlink" title="Description"></a>Description</h3><blockquote>
+<p>第二个密码不会了…</p>
+</blockquote>
+<hr>
+<h3 id="Solution-3"><a href="#Solution-3" class="headerlink" title="Solution"></a>Solution</h3><p>​    <code>shift+f12</code>查看到<code>password</code>然后跟进</p>
+<p><img src="https://pearceimg.oss-cn-beijing.aliyuncs.com/%E3%80%90write%20up%E3%80%91%E9%80%86%E5%90%91%E5%9F%BA%E7%A1%80/%E7%AE%80%E5%8D%95%E7%9A%84%E7%AE%97%E6%B3%951.png" alt=""></p>
+<p><img src="https://pearceimg.oss-cn-beijing.aliyuncs.com/%E3%80%90write%20up%E3%80%91%E9%80%86%E5%90%91%E5%9F%BA%E7%A1%80/%E7%AE%80%E5%8D%95%E7%9A%84%E7%AE%97%E6%B3%952.png" alt=""></p>
+<p>更到<code>sub_401627</code>看函数</p>
+<p><img src="https://pearceimg.oss-cn-beijing.aliyuncs.com/%E3%80%90write%20up%E3%80%91%E9%80%86%E5%90%91%E5%9F%BA%E7%A1%80/%E7%AE%80%E5%8D%95%E7%9A%84%E7%AE%97%E6%B3%953.png" alt=""></p>
+<p>发现第一个密码就是进行字符串的对比 <code>r0b0RUlez!</code></p>
+<p>再跟进到<code>sub_4015EA(0)</code>，发现是一个异或</p>
+<h3 id="Flag-3"><a href="#Flag-3" class="headerlink" title="Flag"></a>Flag</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">暂无</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="你能看懂C语言吗"><a href="#你能看懂C语言吗" class="headerlink" title="你能看懂C语言吗"></a>你能看懂C语言吗</h2><h3 id="Description-4"><a href="#Description-4" class="headerlink" title="Description"></a>Description</h3><blockquote>
+<p>看不懂，指针没学好</p>
+</blockquote>
+<hr>
+<h3 id="Solution-4"><a href="#Solution-4" class="headerlink" title="Solution"></a>Solution</h3><hr>
+<h3 id="Flag-4"><a href="#Flag-4" class="headerlink" title="Flag"></a>Flag</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="你算什么"><a href="#你算什么" class="headerlink" title="你算什么"></a>你算什么</h2><h3 id="Description-5"><a href="#Description-5" class="headerlink" title="Description"></a>Description</h3><blockquote>
+<p>无</p>
+</blockquote>
+<hr>
+<h3 id="Solution-5"><a href="#Solution-5" class="headerlink" title="Solution"></a>Solution</h3><p>发现一个假的flag<code>nctf{this_is_a_fake_flag}</code></p>
+<p>进入IDA 先看<code>main</code>函数</p>
+<p><img src="https://pearceimg.oss-cn-beijing.aliyuncs.com/%E3%80%90write%20up%E3%80%91%E9%80%86%E5%90%91%E5%9F%BA%E7%A1%80/%E4%BD%A0%E7%AE%97%E4%BB%80%E4%B9%881.png" alt=""></p>
+<p>跟进<code>hereisyourflag</code>函数，发现又是ASII码转字符串</p>
+<p><img src="https://pearceimg.oss-cn-beijing.aliyuncs.com/%E3%80%90write%20up%E3%80%91%E9%80%86%E5%90%91%E5%9F%BA%E7%A1%80/%E4%BD%A0%E7%AE%97%E4%BB%80%E4%B9%882.png" alt=""></p>
+<hr>
+<h3 id="Flag-5"><a href="#Flag-5" class="headerlink" title="Flag"></a>Flag</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nctf&#123;Welocome_to_binary\s_world&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="字符串对比"><a href="#字符串对比" class="headerlink" title="字符串对比"></a>字符串对比</h2><h3 id="Description-6"><a href="#Description-6" class="headerlink" title="Description"></a>Description</h3><blockquote>
+<p>无</p>
+</blockquote>
+<hr>
+<h3 id="Solution-6"><a href="#Solution-6" class="headerlink" title="Solution"></a>Solution</h3><p>IDA打开，主函数：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> __cdecl <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">const</span> <span class="keyword">char</span> **argv, <span class="keyword">const</span> <span class="keyword">char</span> **envp)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">signed</span> <span class="keyword">int</span> v3; <span class="comment">// ebx@3</span></span><br><span class="line">  <span class="keyword">char</span> v4; <span class="comment">// al@4</span></span><br><span class="line">  <span class="keyword">int</span> result; <span class="comment">// eax@9</span></span><br><span class="line">  <span class="keyword">int</span> v6; <span class="comment">// [sp+0h] [bp-70h]@0</span></span><br><span class="line">  <span class="keyword">int</span> v7; <span class="comment">// [sp+0h] [bp-70h]@2</span></span><br><span class="line">  <span class="keyword">char</span> v8; <span class="comment">// [sp+12h] [bp-5Eh]@5</span></span><br><span class="line">  <span class="keyword">char</span> v9[<span class="number">20</span>]; <span class="comment">// [sp+14h] [bp-5Ch]@2</span></span><br><span class="line">  <span class="keyword">char</span> v10; <span class="comment">// [sp+28h] [bp-48h]@2</span></span><br><span class="line">  __int16 v11; <span class="comment">// [sp+48h] [bp-28h]@2</span></span><br><span class="line">  <span class="keyword">char</span> v12; <span class="comment">// [sp+4Ah] [bp-26h]@2</span></span><br><span class="line">  <span class="keyword">char</span> v13; <span class="comment">// [sp+4Ch] [bp-24h]@1</span></span><br><span class="line"></span><br><span class="line">  qmemcpy(&amp;v13, a437261636b4d65, <span class="string">'#'</span>);</span><br><span class="line">  <span class="keyword">while</span> ( <span class="number">1</span> )</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="built_in">memset</span>(&amp;v10, <span class="number">0</span>, <span class="number">0x20</span>u);</span><br><span class="line">    v11 = <span class="number">0</span>;</span><br><span class="line">    v12 = <span class="number">0</span>;</span><br><span class="line">    sub_40134B((<span class="keyword">int</span>)aPleaseInputYou, v6);</span><br><span class="line">    <span class="built_in">scanf</span>(aS, v9);</span><br><span class="line">    <span class="keyword">if</span> ( <span class="built_in">strlen</span>(v9) &gt; <span class="string">'\x11'</span> )</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    v3 = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">do</span></span><br><span class="line">    &#123;</span><br><span class="line">      v4 = v9[v3];</span><br><span class="line">      <span class="keyword">if</span> ( !v4 )</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">      <span class="built_in">sprintf</span>(&amp;v8, asc_408044, v4);</span><br><span class="line">      <span class="built_in">strcat</span>(&amp;v10, &amp;v8);</span><br><span class="line">      ++v3;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span> ( v3 &lt; <span class="number">17</span> );</span><br><span class="line">    <span class="keyword">if</span> ( !<span class="built_in">strcmp</span>(&amp;v10, &amp;v13) )</span><br><span class="line">      sub_40134B((<span class="keyword">int</span>)aSuccess, v7);</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">      sub_40134B((<span class="keyword">int</span>)aWrong, v7);</span><br><span class="line">  &#125;</span><br><span class="line">  sub_40134B((<span class="keyword">int</span>)aWrong, v7);</span><br><span class="line">  result = stru_408090._cnt-- - <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">if</span> ( stru_408090._cnt &lt; <span class="number">0</span> )</span><br><span class="line">    result = _filbuf(&amp;stru_408090);</span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line">    ++stru_408090._ptr;</span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>大概意思就是将我们输入的字符串和<code>v13</code>进行比较</p>
+<p><code>strcmp</code>比较的是字符串的十六进制，所以直接将<code>v13：437261636b4d654a757374466f7246756e</code>十六进制数转化为字符串即可</p>
+<hr>
+<h3 id="Flag-6"><a href="#Flag-6" class="headerlink" title="Flag"></a>Flag</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flag&#123;CrackMeJustForFun&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="做不出来就破解它"><a href="#做不出来就破解它" class="headerlink" title="做不出来就破解它"></a>做不出来就破解它</h2><h3 id="Description-7"><a href="#Description-7" class="headerlink" title="Description"></a>Description</h3><blockquote>
+<p>无</p>
+</blockquote>
+<hr>
+<h3 id="Solution-7"><a href="#Solution-7" class="headerlink" title="Solution"></a>Solution</h3><hr>
+<h3 id="Flag-7"><a href="#Flag-7" class="headerlink" title="Flag"></a>Flag</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="逆向思路"><a href="#逆向思路" class="headerlink" title="逆向思路"></a>逆向思路</h2><ol>
+<li><p>peid打开看什么类型的文件，查壳</p>
+</li>
+<li><p>进行静态或者动态分析，用ida，od，gdb等工具</p>
+</li>
+<li><p>可能会涉及到一些c语言的算法</p>
+<p>感觉主要就是读代码，然后找代码</p>
+</li>
+</ol>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2020/02/12/%E3%80%90write%20up%E3%80%91%E9%80%86%E5%90%91%E5%9F%BA%E7%A1%80/">【write up】逆向基础</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">Pearce</a></p>
+        <p><span>发布时间:</span>2020-02-12, 00:14:00</p>
+        <p><span>最后更新:</span>2020-02-15, 19:56:20</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2020/02/12/%E3%80%90write%20up%E3%80%91%E9%80%86%E5%90%91%E5%9F%BA%E7%A1%80/" title="【write up】逆向基础">http://yoursite.com/2020/02/12/%E3%80%90write%20up%E3%80%91%E9%80%86%E5%90%91%E5%9F%BA%E7%A1%80/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2020/02/12/%E3%80%90write%20up%E3%80%91%E9%80%86%E5%90%91%E5%9F%BA%E7%A1%80/　　作者: Pearce" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2020/02/13/%E9%80%86%E5%90%91%E5%B7%A5%E5%85%B7/">
+                    逆向工具
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2020/02/06/Pearce%E5%AD%A6%E4%B9%A0%E6%8A%A5%E5%91%8A%EF%BC%882%EF%BC%89/">
+                    Pearce学习报告(2)
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#ascll码转字符串"><span class="toc-number">1.</span> <span class="toc-text">ascll码转字符串</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Description"><span class="toc-number">1.1.</span> <span class="toc-text">Description</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Solution"><span class="toc-number">1.2.</span> <span class="toc-text">Solution</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Flag"><span class="toc-number">1.3.</span> <span class="toc-text">Flag</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#linux可执行文件-异或"><span class="toc-number">2.</span> <span class="toc-text">linux可执行文件 异或</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Description-1"><span class="toc-number">2.1.</span> <span class="toc-text">Description</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Solution-1"><span class="toc-number">2.2.</span> <span class="toc-text">Solution</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Flag-1"><span class="toc-number">2.3.</span> <span class="toc-text">Flag</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#猜猜哪个是flag"><span class="toc-number">3.</span> <span class="toc-text">猜猜哪个是flag</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Description-2"><span class="toc-number">3.1.</span> <span class="toc-text">Description</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Solution-2"><span class="toc-number">3.2.</span> <span class="toc-text">Solution</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Flag-2"><span class="toc-number">3.3.</span> <span class="toc-text">Flag</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#简单的算法"><span class="toc-number">4.</span> <span class="toc-text">简单的算法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Description-3"><span class="toc-number">4.1.</span> <span class="toc-text">Description</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Solution-3"><span class="toc-number">4.2.</span> <span class="toc-text">Solution</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Flag-3"><span class="toc-number">4.3.</span> <span class="toc-text">Flag</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#你能看懂C语言吗"><span class="toc-number">5.</span> <span class="toc-text">你能看懂C语言吗</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Description-4"><span class="toc-number">5.1.</span> <span class="toc-text">Description</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Solution-4"><span class="toc-number">5.2.</span> <span class="toc-text">Solution</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Flag-4"><span class="toc-number">5.3.</span> <span class="toc-text">Flag</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#你算什么"><span class="toc-number">6.</span> <span class="toc-text">你算什么</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Description-5"><span class="toc-number">6.1.</span> <span class="toc-text">Description</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Solution-5"><span class="toc-number">6.2.</span> <span class="toc-text">Solution</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Flag-5"><span class="toc-number">6.3.</span> <span class="toc-text">Flag</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#字符串对比"><span class="toc-number">7.</span> <span class="toc-text">字符串对比</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Description-6"><span class="toc-number">7.1.</span> <span class="toc-text">Description</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Solution-6"><span class="toc-number">7.2.</span> <span class="toc-text">Solution</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Flag-6"><span class="toc-number">7.3.</span> <span class="toc-text">Flag</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#做不出来就破解它"><span class="toc-number">8.</span> <span class="toc-text">做不出来就破解它</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Description-7"><span class="toc-number">8.1.</span> <span class="toc-text">Description</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Solution-7"><span class="toc-number">8.2.</span> <span class="toc-text">Solution</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Flag-7"><span class="toc-number">8.3.</span> <span class="toc-text">Flag</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#逆向思路"><span class="toc-number">9.</span> <span class="toc-text">逆向思路</span></a></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-4 i,
+        .toc-level-4 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"【write up】逆向基础　| Pearce　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2020/02/13/%E9%80%86%E5%90%91%E5%B7%A5%E5%85%B7/" title="上一篇: 逆向工具">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2020/02/06/Pearce%E5%AD%A6%E4%B9%A0%E6%8A%A5%E5%91%8A%EF%BC%882%EF%BC%89/" title="下一篇: Pearce学习报告(2)">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2020/02/13/%E9%80%86%E5%90%91%E5%B7%A5%E5%85%B7/">逆向工具</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/12/%E3%80%90write%20up%E3%80%91%E9%80%86%E5%90%91%E5%9F%BA%E7%A1%80/">【write up】逆向基础</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/06/Pearce%E5%AD%A6%E4%B9%A0%E6%8A%A5%E5%91%8A%EF%BC%882%EF%BC%89/">Pearce学习报告(2)</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/05/%E3%80%90write%20up%E3%80%91%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cweb%E6%96%B0%E6%89%8B%E5%8C%BA/">【write up】攻防世界web新手区</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/25/%E5%AF%86%E7%A0%81/">密码</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/22/hexo%E9%97%AE%E9%A2%98/">hexo问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/21/%E3%80%90write%20up%E3%80%91%E5%9F%BA%E7%A1%80%E5%AF%86%E7%A0%81%E9%9A%90%E5%86%99/">【write up】基础密码隐写题</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/20/zip%E5%8A%A0%E5%AF%86%E7%9A%84%E5%B8%B8%E8%A7%81%E7%A0%B4%E8%A7%A3%E6%96%B9%E6%B3%95/">zip加密的常见破解方法</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/20/%E9%9A%90%E5%86%99/">隐写</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/19/Pearce%E5%AD%A6%E4%B9%A0%E6%8A%A5%E5%91%8A%EF%BC%881%EF%BC%89/">Pearce学习报告(1)</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/17/hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">hexo博客搭建</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/16/hello-world/">Hello world</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2016-2020 Pearce
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+					<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+    <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.6.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        $("a[target=_blank]").removeAttr("target");
+    
+</script>
+
+    <script>
+        var originTitle = document.title;
+        var titleTime;
+        document.addEventListener("visibilitychange", function() {
+            if (document.hidden) {
+                document.title = "(つェ⊂) 我藏好了哦~ " + originTitle;
+                clearTimeout(titleTime);
+            }
+            else {
+                document.title = "(*´∇｀*) 被你发现啦~ " + originTitle;
+                titleTime = setTimeout(function() {
+                    document.title = originTitle;
+                }, 2000);
+            }
+        })
+    </script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>

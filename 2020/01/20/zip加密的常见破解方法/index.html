@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="Pearce" />
+
+
+
+<meta name="description" content="几种zip加密的常见破解方法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="zip加密的常见破解方法">
+<meta property="og:url" content="http://yoursite.com/2020/01/20/zip%E5%8A%A0%E5%AF%86%E7%9A%84%E5%B8%B8%E8%A7%81%E7%A0%B4%E8%A7%A3%E6%96%B9%E6%B3%95/index.html">
+<meta property="og:site_name" content="Pearce">
+<meta property="og:description" content="几种zip加密的常见破解方法">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://pearceimg.oss-cn-beijing.aliyuncs.com/%E6%9D%82%E9%A1%B9/ziperello.png?x-oss-process=style/md">
+<meta property="og:image" content="http://pearceimg.oss-cn-beijing.aliyuncs.com/%E6%9D%82%E9%A1%B9/%E6%98%8E%E6%96%87%E6%94%BB%E5%87%BB1.png?x-oss-process=style/md">
+<meta property="og:image" content="http://pearceimg.oss-cn-beijing.aliyuncs.com/%E6%9D%82%E9%A1%B9/%E6%98%8E%E6%96%87%E6%94%BB%E5%87%BB2.png?x-oss-process=style/md">
+<meta property="og:image" content="http://pearceimg.oss-cn-beijing.aliyuncs.com/%E6%9D%82%E9%A1%B9/%E6%98%8E%E6%96%87%E6%94%BB%E5%87%BB3.png?x-oss-process=style/md">
+<meta property="og:image" content="http://pearceimg.oss-cn-beijing.aliyuncs.com/%E6%9D%82%E9%A1%B9/%E6%98%8E%E6%96%87%E6%94%BB%E5%87%BB5.png?x-oss-process=style/md">
+<meta property="article:published_time" content="2020-01-19T16:14:00.000Z">
+<meta property="article:modified_time" content="2020-01-25T06:18:10.000Z">
+<meta property="article:author" content="Pearce">
+<meta property="article:tag" content="学习总结">
+<meta property="article:tag" content="zip加密">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://pearceimg.oss-cn-beijing.aliyuncs.com/%E6%9D%82%E9%A1%B9/ziperello.png?x-oss-process=style/md">
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="Pearce" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/favicon.png">
+
+
+
+    <link href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+
+<link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>zip加密的常见破解方法 | Pearce</title>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdnjs.cloudflare.com/ajax/libs/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: true
+    }
+</script>
+
+
+    <script>
+        yiliaConfig.jquery_ui = [true, "//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js", "//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.4/css/jquery-ui.min.css"];
+    </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/avatar.png" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">Pearce</a></h1>
+        </hgroup>
+
+        
+
+        
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="false" />
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class='no-result'>No results found <i class='fa fa-spinner fa-pulse'></i></p>
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="mailto:1219469416@qq.com" title="Email"></a>
+                            
+                                <a class="fa 网易云音乐" href="https://music.163.com/#/user/home?id=97423031" target="_blank" rel="noopener" title="网易云音乐"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/" rel="tag">web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/write-up/" rel="tag">write up</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zip%E5%8A%A0%E5%AF%86/" rel="tag">zip加密</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/" rel="tag">学习总结</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AF%86%E7%A0%81/" rel="tag">密码</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%80%86%E5%90%91/" rel="tag">逆向</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9A%90%E5%86%99/" rel="tag">隐写</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://hexo.io" target="_blank" rel="noopener">Hexo</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://pages.github.com/" target="_blank" rel="noopener">GitHub</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://moxfive.xyz/" target="_blank" rel="noopener">MOxFIVE</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">Pearce</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/avatar.png" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">Pearce</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:1219469416@qq.com" title="Email"></a>
+                            
+                                <a class="fa 网易云音乐" target="_blank" href="https://music.163.com/#/user/home?id=97423031" title="网易云音乐"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+</nav>
+      <div class="body-wrap"><article id="post-zip加密的常见破解方法" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/01/20/zip%E5%8A%A0%E5%AF%86%E7%9A%84%E5%B8%B8%E8%A7%81%E7%A0%B4%E8%A7%A3%E6%96%B9%E6%B3%95/" class="article-date">
+      <time datetime="2020-01-19T16:14:00.000Z" itemprop="datePublished">2020-01-20</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      zip加密的常见破解方法
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/">学习总结</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/zip%E5%8A%A0%E5%AF%86/" rel="tag">zip加密</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/" rel="tag">学习总结</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>几种zip加密的常见破解方法<a id="more"></a></p>
+<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>​     ZIP是一种相当简单的分别压缩每个文件的存档格式。分别压缩文件允许不必读取另外的数据而检索独立的文件；理论上，这种格式允许对不同的文件使用不同的算法。不管用何种方法，对这种格式的一个告诫是对于包含很多小文件的时候，存档会明显的比压缩成一个独立的文件（在类Unix系统中一个经典的例子是普通的tar.gz存档是由一个使用gzip压缩的TAR存档组成）要大。</p>
+<p>  ZIP支持基于对称加密系统的一个简单的密码，现在已知有严重的缺陷，已知明文攻击，字典攻击和暴力攻击。ZIP也支持分卷压缩。在近来一段时间，ZIP加入了包括新的压缩和加密方法的新特征，不过这些新特征并没有被许多工具所支持并且没有得到广泛应用。</p>
+<h1 id="ZIP伪加密"><a href="#ZIP伪加密" class="headerlink" title="ZIP伪加密"></a>ZIP伪加密</h1><p>​    ZIP文件是一种压缩文件，可进行加密，也可不加密。而伪加密是在未加密的zip文件基础上修改了它的压缩源文件目录区里的全局方式位标记的比特值，使得压缩软件打开它的时候识别为加密文件，提示输入密码， 而在这个时候，不管你用什么软件对其进行密码破解，都无法打开它！这就是它存在的意义！</p>
+<h2 id="一、使用ZipCenOp-jar"><a href="#一、使用ZipCenOp-jar" class="headerlink" title="一、使用ZipCenOp.jar"></a>一、使用ZipCenOp.jar</h2><p>需要java环境，在cmd中使用   java -jar ZipCenOp.jar r xxx.zip   成功后压缩包可以直接打开</p>
+<h2 id="二使用winRAR"><a href="#二使用winRAR" class="headerlink" title="二使用winRAR"></a>二使用winRAR</h2><p>进入工具，压缩修复文件，修复完后压缩包就可以打开了</p>
+<p>上述两种方法很多情况都可以用，但是有时不行，第三种方法可以应对各种zip伪加密</p>
+<h2 id="三、修改文件头的加密标志位"><a href="#三、修改文件头的加密标志位" class="headerlink" title="三、修改文件头的加密标志位"></a>三、修改文件头的加密标志位</h2><p>原理：一个zip文件由三部分组成：压缩源文件数据区+压缩源文件目录区+压缩源文件目录结束标志。</p>
+<p><strong>压缩源文件数据区:</strong><br>50 4B 03 04：这是头文件标记（0x04034b50）<br>14 00：解压文件所需 pkware 版本<br>00 00：全局方式位标记（有无加密） 头文件标记后2bytes<br>08 00：压缩方式<br>5A 7E：最后修改文件时间<br>F7 46：最后修改文件日期<br>16 B5 80 14：CRC-32校验（1480B516）<br>19 00 00 00：压缩后尺寸（25）<br>17 00 00 00：未压缩尺寸（23）<br>07 00：文件名长度<br>00 00：扩展记录长度<br>6B65792E7478740BCECC750E71ABCE48CDC9C95728CECC2DC849AD284DAD0500<br><strong>压缩源文件目录区</strong><br>50 4B 01 02：目录中文件文件头标记(0x02014b50)<br>3F 00：压缩使用的 pkware 版本<br>14 00：解压文件所需 pkware 版本<br>00 00：全局方式位标记（有无加密，伪加密的关键） 目录文件标记后4bytes<br>08 00：压缩方式<br>5A 7E：最后修改文件时间<br>F7 46：最后修改文件日期<br>16 B5 80 14：CRC-32校验（1480B516）<br>19 00 00 00：压缩后尺寸（25）<br>17 00 00 00：未压缩尺寸（23）<br>07 00：文件名长度<br>24 00：扩展字段长度<br>00 00：文件注释长度<br>00 00：磁盘开始号<br>00 00：内部文件属性<br>20 00 00 00：外部文件属性<br>00 00 00 00：局部头部偏移量<br>6B65792E7478740A00200000000000010018006558F04A1CC5D001BDEBDD3B1CC5D001BDEBDD3B1CC5D001<br><strong>压缩源文件目录结束标志</strong><br>50 4B 05 06：目录结束标记<br>00 00：当前磁盘编号<br>00 00：目录区开始磁盘编号<br>01 00：本磁盘上纪录总数<br>01 00：目录区中纪录总数<br>59 00 00 00：目录区尺寸大小<br>3E 00 00 00：目录区对第一张磁盘的偏移量<br>00 00：ZIP 文件注释长度</p>
+<p>这个详细的介绍了各部分的含义，修改其压缩源文件目录区的全布局方式标记比特值之后即可对文件加密或解密。</p>
+<p>具体操作如下：<br>压缩源文件数据区：50 4B 03 04：这是头文件标记<br>压缩源文件目录区：<br>50 4B 01 02：目录中文件文件头标记<br>3F 00：压缩使用的 pkware 版本<br>14 00：解压文件所需 pkware 版本<br>00 00：全局方式位标记（有无加密，这个更改这里进行伪加密，改为09 00打开就会提示有密码了）<br>压缩源文件目录结束标志 ：50 4B 05 06：目录结束标记 </p>
+<blockquote>
+<p>全局方式位标记的四个数字中只有第二个数字对其有影响，其它的不管为何值，都不影响它的加密属性！<br> 第二个数字为奇数时 –&gt;加密<br> 第二个数字为偶数时 –&gt;未加密</p>
+</blockquote>
+<h1 id="2-暴力破解"><a href="#2-暴力破解" class="headerlink" title="2.暴力破解"></a>2.暴力破解</h1><p>逐个尝试选定集合的密码，直到正确</p>
+<p>1.暴力:选择密码范围,长度等,由软件组合生成密码进行爆破</p>
+<p>2.掩码:知道密码中的一部分,只需按规则构造其余部分</p>
+<p>3.字典:通常是多数用户常用的一些密码集合,导入字典文件用其中的密码进行爆破</p>
+<p>我一般使用Ziperello</p>
+<img src="http://pearceimg.oss-cn-beijing.aliyuncs.com/%E6%9D%82%E9%A1%B9/ziperello.png?x-oss-process=style/md" style="zoom: 67%;" />
+
+<h1 id="3-明文攻击"><a href="#3-明文攻击" class="headerlink" title="3.明文攻击"></a>3.明文攻击</h1><p> 如果得到了加密压缩包中的某个文件，那么就可以通过明文攻击来获取压缩密码</p>
+<p>因为同一个zip压缩包里的所有文件都是使用同一个加密密钥来加密的，所以可以用已知文件来找加密密钥，利用密钥来解锁其他加密文件</p>
+<p><img src="" alt="">举个例子，这里我们有一个压缩包和一张图片，图片也是在压缩包里，这样就可以进行明文攻击</p>
+<p>先将已知的文件压缩，从CRC32也可以看出两个文件是一样的</p>
+<p><img src="http://pearceimg.oss-cn-beijing.aliyuncs.com/%E6%9D%82%E9%A1%B9/%E6%98%8E%E6%96%87%E6%94%BB%E5%87%BB1.png?x-oss-process=style/md" alt=""></p>
+<img src="http://pearceimg.oss-cn-beijing.aliyuncs.com/%E6%9D%82%E9%A1%B9/%E6%98%8E%E6%96%87%E6%94%BB%E5%87%BB2.png?x-oss-process=style/md" style="zoom:80%;" />
+
+<p>用<code>ARCHPR</code>的明文攻击功能，将要解密的压缩包放在上面的路径，已知文件放明文路径</p>
+<p><img src="http://pearceimg.oss-cn-beijing.aliyuncs.com/%E6%9D%82%E9%A1%B9/%E6%98%8E%E6%96%87%E6%94%BB%E5%87%BB3.png?x-oss-process=style/md" alt=""></p>
+<p>点击开始，跑一会就有结果了</p>
+<p><img src="http://pearceimg.oss-cn-beijing.aliyuncs.com/%E6%9D%82%E9%A1%B9/%E6%98%8E%E6%96%87%E6%94%BB%E5%87%BB5.png?x-oss-process=style/md" alt=""></p>
+<h1 id="4-CRC32碰撞"><a href="#4-CRC32碰撞" class="headerlink" title="4. CRC32碰撞"></a>4. CRC32碰撞</h1><p>CRC校验实用程序库 在数据存储和数据通讯领域，为了保证数据的正确，就不得不采用检错的手段，CRC的全称是循环冗余校验。</p>
+<p>每个文件都有唯一的CRC32值，即便数据中一个bit发生变化，也会导致CRC32值不同。若是知道一段数据的长度和CRC32值，便可穷举数据，与其CRC32对照，以此达到暴力猜解的目的。但通常只适用于较小文本文件。</p>
+<p>爆破脚本：<a href="https://github.com/theonlypwner/crc32" target="_blank" rel="noopener">https://github.com/theonlypwner/crc32</a></p>
+<p><strong>算法百度链接</strong>：<a href="https://baike.baidu.com/item/CRC32/7460858?fr=aladdin" target="_blank" rel="noopener">https://baike.baidu.com/item/CRC32/7460858?fr=aladdin</a></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2020/01/20/zip%E5%8A%A0%E5%AF%86%E7%9A%84%E5%B8%B8%E8%A7%81%E7%A0%B4%E8%A7%A3%E6%96%B9%E6%B3%95/">zip加密的常见破解方法</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">Pearce</a></p>
+        <p><span>发布时间:</span>2020-01-20, 00:14:00</p>
+        <p><span>最后更新:</span>2020-01-25, 14:18:10</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2020/01/20/zip%E5%8A%A0%E5%AF%86%E7%9A%84%E5%B8%B8%E8%A7%81%E7%A0%B4%E8%A7%A3%E6%96%B9%E6%B3%95/" title="zip加密的常见破解方法">http://yoursite.com/2020/01/20/zip%E5%8A%A0%E5%AF%86%E7%9A%84%E5%B8%B8%E8%A7%81%E7%A0%B4%E8%A7%A3%E6%96%B9%E6%B3%95/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2020/01/20/zip%E5%8A%A0%E5%AF%86%E7%9A%84%E5%B8%B8%E8%A7%81%E7%A0%B4%E8%A7%A3%E6%96%B9%E6%B3%95/　　作者: Pearce" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2020/01/21/%E3%80%90write%20up%E3%80%91%E5%9F%BA%E7%A1%80%E5%AF%86%E7%A0%81%E9%9A%90%E5%86%99/">
+                    【write up】基础密码隐写题
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2020/01/20/%E9%9A%90%E5%86%99/">
+                    隐写
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#简介"><span class="toc-number">1.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ZIP伪加密"><span class="toc-number">2.</span> <span class="toc-text">ZIP伪加密</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、使用ZipCenOp-jar"><span class="toc-number">2.1.</span> <span class="toc-text">一、使用ZipCenOp.jar</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二使用winRAR"><span class="toc-number">2.2.</span> <span class="toc-text">二使用winRAR</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、修改文件头的加密标志位"><span class="toc-number">2.3.</span> <span class="toc-text">三、修改文件头的加密标志位</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-暴力破解"><span class="toc-number">3.</span> <span class="toc-text">2.暴力破解</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-明文攻击"><span class="toc-number">4.</span> <span class="toc-text">3.明文攻击</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-CRC32碰撞"><span class="toc-number">5.</span> <span class="toc-text">4. CRC32碰撞</span></a></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-4 i,
+        .toc-level-4 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"zip加密的常见破解方法　| Pearce　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2020/01/21/%E3%80%90write%20up%E3%80%91%E5%9F%BA%E7%A1%80%E5%AF%86%E7%A0%81%E9%9A%90%E5%86%99/" title="上一篇: 【write up】基础密码隐写题">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2020/01/20/%E9%9A%90%E5%86%99/" title="下一篇: 隐写">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2020/02/13/%E9%80%86%E5%90%91%E5%B7%A5%E5%85%B7/">逆向工具</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/12/%E3%80%90write%20up%E3%80%91%E9%80%86%E5%90%91%E5%9F%BA%E7%A1%80/">【write up】逆向基础</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/06/Pearce%E5%AD%A6%E4%B9%A0%E6%8A%A5%E5%91%8A%EF%BC%882%EF%BC%89/">Pearce学习报告(2)</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/05/%E3%80%90write%20up%E3%80%91%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cweb%E6%96%B0%E6%89%8B%E5%8C%BA/">【write up】攻防世界web新手区</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/25/%E5%AF%86%E7%A0%81/">密码</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/22/hexo%E9%97%AE%E9%A2%98/">hexo问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/21/%E3%80%90write%20up%E3%80%91%E5%9F%BA%E7%A1%80%E5%AF%86%E7%A0%81%E9%9A%90%E5%86%99/">【write up】基础密码隐写题</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/20/zip%E5%8A%A0%E5%AF%86%E7%9A%84%E5%B8%B8%E8%A7%81%E7%A0%B4%E8%A7%A3%E6%96%B9%E6%B3%95/">zip加密的常见破解方法</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/20/%E9%9A%90%E5%86%99/">隐写</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/19/Pearce%E5%AD%A6%E4%B9%A0%E6%8A%A5%E5%91%8A%EF%BC%881%EF%BC%89/">Pearce学习报告(1)</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/17/hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">hexo博客搭建</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/16/hello-world/">Hello world</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2016-2020 Pearce
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+					<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+    <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.6.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        $("a[target=_blank]").removeAttr("target");
+    
+</script>
+
+    <script>
+        var originTitle = document.title;
+        var titleTime;
+        document.addEventListener("visibilitychange", function() {
+            if (document.hidden) {
+                document.title = "(つェ⊂) 我藏好了哦~ " + originTitle;
+                clearTimeout(titleTime);
+            }
+            else {
+                document.title = "(*´∇｀*) 被你发现啦~ " + originTitle;
+                titleTime = setTimeout(function() {
+                    document.title = originTitle;
+                }, 2000);
+            }
+        })
+    </script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>

@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="Pearce" />
+
+
+
+<meta name="description" content="JAVA&amp;Python环境安装，vmware虚拟机安装，一些CTF工具的简单使用">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Pearce学习报告(1)">
+<meta property="og:url" content="http://yoursite.com/2020/01/19/Pearce%E5%AD%A6%E4%B9%A0%E6%8A%A5%E5%91%8A%EF%BC%881%EF%BC%89/index.html">
+<meta property="og:site_name" content="Pearce">
+<meta property="og:description" content="JAVA&amp;Python环境安装，vmware虚拟机安装，一些CTF工具的简单使用">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://pearceimg.oss-cn-beijing.aliyuncs.com/%E5%AD%A6%E4%B9%A0%E6%8A%A5%E5%91%8A%281%29/QQ%E5%9B%BE%E7%89%8720200115195426.png?x-oss-process=style/md">
+<meta property="og:image" content="http://pearceimg.oss-cn-beijing.aliyuncs.com/%E5%AD%A6%E4%B9%A0%E6%8A%A5%E5%91%8A%281%29/Snipaste_2020-01-17_15-24-18.png?x-oss-process=style/md">
+<meta property="og:image" content="http://pearceimg.oss-cn-beijing.aliyuncs.com/%E5%AD%A6%E4%B9%A0%E6%8A%A5%E5%91%8A%281%29/Snipaste_2020-01-17_15-25-22.png?x-oss-process=style/md">
+<meta property="og:image" content="http://pearceimg.oss-cn-beijing.aliyuncs.com/%E5%AD%A6%E4%B9%A0%E6%8A%A5%E5%91%8A%281%29/Snipaste_2020-01-17_15-38-01.png?x-oss-process=style/md">
+<meta property="og:image" content="http://pearceimg.oss-cn-beijing.aliyuncs.com/%E5%AD%A6%E4%B9%A0%E6%8A%A5%E5%91%8A%281%29/Snipaste_2020-01-17_15-43-18.png?x-oss-process=style/md">
+<meta property="og:image" content="http://pearceimg.oss-cn-beijing.aliyuncs.com/%E5%AD%A6%E4%B9%A0%E6%8A%A5%E5%91%8A%281%29/Snipaste_2020-01-17_15-49-15.png?x-oss-process=style/md">
+<meta property="og:image" content="http://pearceimg.oss-cn-beijing.aliyuncs.com/%E5%AD%A6%E4%B9%A0%E6%8A%A5%E5%91%8A%281%29/Snipaste_2020-01-17_15-49-44.png?x-oss-process=style/md">
+<meta property="og:image" content="http://pearceimg.oss-cn-beijing.aliyuncs.com/%E5%AD%A6%E4%B9%A0%E6%8A%A5%E5%91%8A%281%29/Snipaste_2020-01-17_15-51-10.png?x-oss-process=style/md">
+<meta property="og:image" content="http://pearceimg.oss-cn-beijing.aliyuncs.com/%E5%AD%A6%E4%B9%A0%E6%8A%A5%E5%91%8A%281%29/Snipaste_2020-01-17_16-11-20.png?x-oss-process=style/md">
+<meta property="article:published_time" content="2020-01-18T16:14:00.000Z">
+<meta property="article:modified_time" content="2020-01-25T06:17:58.000Z">
+<meta property="article:author" content="Pearce">
+<meta property="article:tag" content="学习总结">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://pearceimg.oss-cn-beijing.aliyuncs.com/%E5%AD%A6%E4%B9%A0%E6%8A%A5%E5%91%8A%281%29/QQ%E5%9B%BE%E7%89%8720200115195426.png?x-oss-process=style/md">
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="Pearce" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/favicon.png">
+
+
+
+    <link href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+
+<link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>Pearce学习报告(1) | Pearce</title>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdnjs.cloudflare.com/ajax/libs/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: true
+    }
+</script>
+
+
+    <script>
+        yiliaConfig.jquery_ui = [true, "//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js", "//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.4/css/jquery-ui.min.css"];
+    </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/avatar.png" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">Pearce</a></h1>
+        </hgroup>
+
+        
+
+        
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="false" />
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class='no-result'>No results found <i class='fa fa-spinner fa-pulse'></i></p>
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="mailto:1219469416@qq.com" title="Email"></a>
+                            
+                                <a class="fa 网易云音乐" href="https://music.163.com/#/user/home?id=97423031" target="_blank" rel="noopener" title="网易云音乐"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/" rel="tag">web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/write-up/" rel="tag">write up</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zip%E5%8A%A0%E5%AF%86/" rel="tag">zip加密</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/" rel="tag">学习总结</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AF%86%E7%A0%81/" rel="tag">密码</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%80%86%E5%90%91/" rel="tag">逆向</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9A%90%E5%86%99/" rel="tag">隐写</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://hexo.io" target="_blank" rel="noopener">Hexo</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://pages.github.com/" target="_blank" rel="noopener">GitHub</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://moxfive.xyz/" target="_blank" rel="noopener">MOxFIVE</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">Pearce</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/avatar.png" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">Pearce</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:1219469416@qq.com" title="Email"></a>
+                            
+                                <a class="fa 网易云音乐" target="_blank" href="https://music.163.com/#/user/home?id=97423031" title="网易云音乐"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+</nav>
+      <div class="body-wrap"><article id="post-Pearce学习报告（1）" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/01/19/Pearce%E5%AD%A6%E4%B9%A0%E6%8A%A5%E5%91%8A%EF%BC%881%EF%BC%89/" class="article-date">
+      <time datetime="2020-01-18T16:14:00.000Z" itemprop="datePublished">2020-01-19</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Pearce学习报告(1)
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/">学习总结</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/" rel="tag">学习总结</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>JAVA&amp;Python环境安装，vmware虚拟机安装，一些CTF工具的简单使用<a id="more"></a></p>
+<h1 id="一-JAVA-amp-Python环境的搭建"><a href="#一-JAVA-amp-Python环境的搭建" class="headerlink" title="一. JAVA&amp;Python环境的搭建"></a>一. JAVA&amp;Python环境的搭建</h1><ul>
+<li>官网下载JAVA&amp;Python软件，直接安装即可</li>
+<li>Python下载链接<a href="https://www.python.org/downloads/" target="_blank" rel="noopener">https://www.python.org/downloads/</a></li>
+<li>JAVA64位下载链接<a href="https://www.java.com/zh_CN/download/windows-64bit.jsp" target="_blank" rel="noopener">https://www.java.com/zh_CN/download/windows-64bit.jsp</a></li>
+</ul>
+<h1 id="二-VMware虚拟机环境的安装"><a href="#二-VMware虚拟机环境的安装" class="headerlink" title="二. VMware虚拟机环境的安装"></a>二. VMware虚拟机环境的安装</h1><ol>
+<li>下载VMware <a href="https://my.vmware.com/cn/web/vmware/details?downloadGroup=WKST-1551-WIN&amp;productId=799&amp;rPId=39513" target="_blank" rel="noopener">https://my.vmware.com/cn/web/vmware/details?downloadGroup=WKST-1551-WIN&amp;productId=799&amp;rPId=39513</a></li>
+<li>安装，输入密钥UY758-0RXEQ-M81WP-8ZM7Z-Y3HDA</li>
+<li>安装虚拟机，进入bios修改Intelvt-x取消禁用</li>
+<li>运行虚拟机，安装vmware tools 可以自由调节虚拟机大小，自由拖拽文件在windows和linux之间</li>
+</ol>
+<p><img src="http://pearceimg.oss-cn-beijing.aliyuncs.com/%E5%AD%A6%E4%B9%A0%E6%8A%A5%E5%91%8A%281%29/QQ%E5%9B%BE%E7%89%8720200115195426.png?x-oss-process=style/md" alt=""></p>
+<h1 id="三-CTF一些基本工具的使用"><a href="#三-CTF一些基本工具的使用" class="headerlink" title="三.CTF一些基本工具的使用"></a>三.CTF一些基本工具的使用</h1><h2 id="3-1-web工具"><a href="#3-1-web工具" class="headerlink" title="3.1 web工具"></a>3.1 web工具</h2><h3 id="3-1-1-蚁剑AntSword"><a href="#3-1-1-蚁剑AntSword" class="headerlink" title="3.1.1 蚁剑AntSword"></a>3.1.1 蚁剑AntSword</h3><p>解压，运行软件，选择一个空文件夹(这个项目文件夹就是你以后需要备份的，存储着你的shell和shell内的资料)对蚁剑进行初始化，杀毒软件会报错，直接给杀毒软件关了。</p>
+<p>等初始化完成后，再双击“AntSword.exe”即可正常启动！</p>
+<p>蚁剑的用法和菜刀差不多，但是比菜刀功能强大一些，可以在插件商店里安装各种插件。</p>
+<p>以PHP为例蚁剑教程，在目标服务器的Web目录下新建一个Shell，名为ant.php，内容</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> <span class="keyword">eval</span>($_POST[<span class="string">'ant'</span>]); <span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>打开AntSword，在空白位置单击「鼠标右键」，弹出菜单中选择 「<code>添加数据</code>」，在添加数据界面中，添加连接信息。然后点击 「<code>添加</code>」按钮，即可在数据管理中看到刚才添加的 Shell，双击刚才添加的 Shell,即可看到文件管理界面，右键会更到更多功能。</p>
+<h3 id="3-1-2-Burpsuit"><a href="#3-1-2-Burpsuit" class="headerlink" title="3.1.2 Burpsuit"></a>3.1.2 Burpsuit</h3><p>需要java环境,运行<code>BurpLoader.jar</code>.</p>
+<p>Burp Suite是Web应用程序测试的最佳工具之一，其多种功能可以帮我们执行各种任务.请求的拦截和修改,扫描web应用程序漏洞,以暴力破解登陆表单,执行会话令牌等多种的随机性检查。本文将做一个Burp Suite完全正的演练，主要讨论它的以下特点.<br>1.代理–Burp Suite带有一个代理,通过默认端口8080上运行，使用这个代理，我们可以截获并修改从客户端到web应用程序的数据包.</p>
+<p>2.Spider(蜘蛛)–Burp  Suite的蜘蛛功能是用来抓取Web应用程序的链接和内容等，它会自动提交登陆表单（通过用户自定义输入）的情况下.Burp  Suite的蜘蛛可以爬行扫描出网站上所有的链接,通过对这些链接的详细扫描来发现Web应用程序的漏洞 。</p>
+<p>3.Scanner(扫描器)–它是用来扫描Web应用程序漏洞的.在测试的过程中可能会出现一些误报。重要的是要记住,自动扫描器扫描的结果不可能完全100%准确.</p>
+<p>4.Intruder(入侵)–此功能呢可用语多种用途,如利用漏洞,Web应用程序模糊测试,进行暴力猜解等.</p>
+<p>5.Repeater(中继器)–此功能用于根据不同的情况修改和发送相同的请求次数并分析.</p>
+<p>6.Sequencer–此功能主要用来检查Web应用程序提供的会话令牌的随机性.并执行各种测试.</p>
+<p>7.Decoder(解码)–此功能可用于解码数据找回原来的数据形式,或者进行编码和加密数据.</p>
+<p>8.Comparer–此功能用来执行任意的两个请求,响应或任何其它形式的数据之间的比较.</p>
+<p>下面演示抓包的过程，以bugku题目<code>头等舱</code>为例</p>
+<p>1.配置浏览器代理，默认为127.0.0.1：80</p>
+<p><img src="http://pearceimg.oss-cn-beijing.aliyuncs.com/%E5%AD%A6%E4%B9%A0%E6%8A%A5%E5%91%8A%281%29/Snipaste_2020-01-17_15-24-18.png?x-oss-process=style/md" alt=""></p>
+<p>2.打开开关。</p>
+<p><img src="http://pearceimg.oss-cn-beijing.aliyuncs.com/%E5%AD%A6%E4%B9%A0%E6%8A%A5%E5%91%8A%281%29/Snipaste_2020-01-17_15-25-22.png?x-oss-process=style/md" alt=""></p>
+<p>进行抓包，右键送到repeater，然后go，在服务器的响应头看到了flag<br><img src="http://pearceimg.oss-cn-beijing.aliyuncs.com/%E5%AD%A6%E4%B9%A0%E6%8A%A5%E5%91%8A%281%29/Snipaste_2020-01-17_15-38-01.png?x-oss-process=style/md" alt=""></p>
+<h2 id="3-2-密码工具"><a href="#3-2-密码工具" class="headerlink" title="3.2 密码工具"></a>3.2 密码工具</h2><h3 id="3-2-1-小葵"><a href="#3-2-1-小葵" class="headerlink" title="3.2.1 小葵"></a>3.2.1 小葵</h3><p>ui界面简洁明了</p>
+<p><img src="http://pearceimg.oss-cn-beijing.aliyuncs.com/%E5%AD%A6%E4%B9%A0%E6%8A%A5%E5%91%8A%281%29/Snipaste_2020-01-17_15-43-18.png?x-oss-process=style/md" alt=""></p>
+<h3 id="3-2-2-CTFCrackTools"><a href="#3-2-2-CTFCrackTools" class="headerlink" title="3.2.2 CTFCrackTools"></a>3.2.2 CTFCrackTools</h3><p>需要java环境，直接输入字符，右键进行加密解密</p>
+<p><img src="http://pearceimg.oss-cn-beijing.aliyuncs.com/%E5%AD%A6%E4%B9%A0%E6%8A%A5%E5%91%8A%281%29/Snipaste_2020-01-17_15-49-15.png?x-oss-process=style/md" alt=""><br><img src="http://pearceimg.oss-cn-beijing.aliyuncs.com/%E5%AD%A6%E4%B9%A0%E6%8A%A5%E5%91%8A%281%29/Snipaste_2020-01-17_15-49-44.png?x-oss-process=style/md" alt=""></p>
+<h3 id="3-2-3-ASCII码随心换"><a href="#3-2-3-ASCII码随心换" class="headerlink" title="3.2.3 ASCII码随心换"></a>3.2.3 ASCII码随心换</h3><p><img src="http://pearceimg.oss-cn-beijing.aliyuncs.com/%E5%AD%A6%E4%B9%A0%E6%8A%A5%E5%91%8A%281%29/Snipaste_2020-01-17_15-51-10.png?x-oss-process=style/md" alt=""></p>
+<h2 id="3-3-逆向工具"><a href="#3-3-逆向工具" class="headerlink" title="3.3 逆向工具"></a>3.3 逆向工具</h2><h3 id="3-3-1-IDA"><a href="#3-3-1-IDA" class="headerlink" title="3.3.1 IDA"></a>3.3.1 IDA</h3><p>IDA Pro（简称IDA）是DataRescue公司（<a href="http://www.datarescue.com）出品的一款交互式反汇编工具，它功能强大、操作复杂，要完全掌握它，需要很多知识。IDA最主要的特性是交互和多处理器。操作者可以通过对IDA的交互来指导IDA更好地反汇编，IDA并不自动解决程序中的问题，但它会按用户的指令找到可疑之处，用户的工作是通知IDA怎样去做。" target="_blank" rel="noopener">www.datarescue.com）出品的一款交互式反汇编工具，它功能强大、操作复杂，要完全掌握它，需要很多知识。IDA最主要的特性是交互和多处理器。操作者可以通过对IDA的交互来指导IDA更好地反汇编，IDA并不自动解决程序中的问题，但它会按用户的指令找到可疑之处，用户的工作是通知IDA怎样去做。</a><br>打开之后，IDA会提供3种不同的打开方式；New（新建），Go（运行），Previous（上一个）。当我们初次打开的时候选择GO就可以了。进入之后，选择左上角的file中的open打开文件。</p>
+<p>打开文件以后，主界面工作区显示</p>
+<pre><code>IDA View-A是反汇编窗口，
+HexView-A是十六进制格式显示的窗口，
+Imports是导入表（程序中调用到的外面的函数），
+Functions是函数表（这个程序中的函数），
+Structures是结构，
+Enums是枚举。</code></pre><p>F5查看伪代码。</p>
+<h2 id="3-4-隐写工具"><a href="#3-4-隐写工具" class="headerlink" title="3.4 隐写工具"></a>3.4 隐写工具</h2><h3 id="3-4-1-winhex"><a href="#3-4-1-winhex" class="headerlink" title="3.4.1 winhex"></a>3.4.1 winhex</h3><p>一款16进制编辑器，可以用来检查和修复各种文件、恢复删除文件、硬盘损坏造成的数据丢失等。</p>
+<p>隐写图片一般会放在winhex里检测</p>
+<p>如果打开有报错，F5更改目录</p>
+<p><img src="http://pearceimg.oss-cn-beijing.aliyuncs.com/%E5%AD%A6%E4%B9%A0%E6%8A%A5%E5%91%8A%281%29/Snipaste_2020-01-17_16-11-20.png?x-oss-process=style/md" alt=""></p>
+<h3 id="3-4-2-Stegsolve"><a href="#3-4-2-Stegsolve" class="headerlink" title="3.4.2 Stegsolve"></a>3.4.2 Stegsolve</h3><p>需要java环境，遇到lsb最低位隐写时使用</p>
+<p>File Format:文件格式，这个主要是查看图片的具体信息</p>
+<p>Data Extract:数据抽取，图片中隐藏数据的抽取</p>
+<p>Frame Browser:帧浏览器，主要是对GIF之类的动图进行分解，动图变成一张张图片，便于查看</p>
+<p>Image Combiner:拼图，图片拼接</p>
+<h3 id="3-4-3-Audacity"><a href="#3-4-3-Audacity" class="headerlink" title="3.4.3 Audacity"></a>3.4.3 Audacity</h3><p>audacity是一款免费的音频处理软件，遵循<a href="https://baike.baidu.com/item/GNU/671972" target="_blank" rel="noopener">GNU</a>协议的<a href="https://baike.baidu.com/item/免费软件/599405" target="_blank" rel="noopener">免费软件</a>。</p>
+<p>用于声音隐写。</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2020/01/19/Pearce%E5%AD%A6%E4%B9%A0%E6%8A%A5%E5%91%8A%EF%BC%881%EF%BC%89/">Pearce学习报告(1)</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">Pearce</a></p>
+        <p><span>发布时间:</span>2020-01-19, 00:14:00</p>
+        <p><span>最后更新:</span>2020-01-25, 14:17:58</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2020/01/19/Pearce%E5%AD%A6%E4%B9%A0%E6%8A%A5%E5%91%8A%EF%BC%881%EF%BC%89/" title="Pearce学习报告(1)">http://yoursite.com/2020/01/19/Pearce%E5%AD%A6%E4%B9%A0%E6%8A%A5%E5%91%8A%EF%BC%881%EF%BC%89/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2020/01/19/Pearce%E5%AD%A6%E4%B9%A0%E6%8A%A5%E5%91%8A%EF%BC%881%EF%BC%89/　　作者: Pearce" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2020/01/20/%E9%9A%90%E5%86%99/">
+                    隐写
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2020/01/17/hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">
+                    hexo博客搭建
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#一-JAVA-amp-Python环境的搭建"><span class="toc-number">1.</span> <span class="toc-text">一. JAVA&amp;Python环境的搭建</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#二-VMware虚拟机环境的安装"><span class="toc-number">2.</span> <span class="toc-text">二. VMware虚拟机环境的安装</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#三-CTF一些基本工具的使用"><span class="toc-number">3.</span> <span class="toc-text">三.CTF一些基本工具的使用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-web工具"><span class="toc-number">3.1.</span> <span class="toc-text">3.1 web工具</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-1-蚁剑AntSword"><span class="toc-number">3.1.1.</span> <span class="toc-text">3.1.1 蚁剑AntSword</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-2-Burpsuit"><span class="toc-number">3.1.2.</span> <span class="toc-text">3.1.2 Burpsuit</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2-密码工具"><span class="toc-number">3.2.</span> <span class="toc-text">3.2 密码工具</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-1-小葵"><span class="toc-number">3.2.1.</span> <span class="toc-text">3.2.1 小葵</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-2-CTFCrackTools"><span class="toc-number">3.2.2.</span> <span class="toc-text">3.2.2 CTFCrackTools</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-3-ASCII码随心换"><span class="toc-number">3.2.3.</span> <span class="toc-text">3.2.3 ASCII码随心换</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-3-逆向工具"><span class="toc-number">3.3.</span> <span class="toc-text">3.3 逆向工具</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-1-IDA"><span class="toc-number">3.3.1.</span> <span class="toc-text">3.3.1 IDA</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-4-隐写工具"><span class="toc-number">3.4.</span> <span class="toc-text">3.4 隐写工具</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-1-winhex"><span class="toc-number">3.4.1.</span> <span class="toc-text">3.4.1 winhex</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-2-Stegsolve"><span class="toc-number">3.4.2.</span> <span class="toc-text">3.4.2 Stegsolve</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-3-Audacity"><span class="toc-number">3.4.3.</span> <span class="toc-text">3.4.3 Audacity</span></a></li></ol></li></ol></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-4 i,
+        .toc-level-4 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"Pearce学习报告(1)　| Pearce　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2020/01/20/%E9%9A%90%E5%86%99/" title="上一篇: 隐写">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2020/01/17/hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" title="下一篇: hexo博客搭建">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2020/02/13/%E9%80%86%E5%90%91%E5%B7%A5%E5%85%B7/">逆向工具</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/12/%E3%80%90write%20up%E3%80%91%E9%80%86%E5%90%91%E5%9F%BA%E7%A1%80/">【write up】逆向基础</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/06/Pearce%E5%AD%A6%E4%B9%A0%E6%8A%A5%E5%91%8A%EF%BC%882%EF%BC%89/">Pearce学习报告(2)</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/05/%E3%80%90write%20up%E3%80%91%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cweb%E6%96%B0%E6%89%8B%E5%8C%BA/">【write up】攻防世界web新手区</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/25/%E5%AF%86%E7%A0%81/">密码</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/22/hexo%E9%97%AE%E9%A2%98/">hexo问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/21/%E3%80%90write%20up%E3%80%91%E5%9F%BA%E7%A1%80%E5%AF%86%E7%A0%81%E9%9A%90%E5%86%99/">【write up】基础密码隐写题</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/20/zip%E5%8A%A0%E5%AF%86%E7%9A%84%E5%B8%B8%E8%A7%81%E7%A0%B4%E8%A7%A3%E6%96%B9%E6%B3%95/">zip加密的常见破解方法</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/20/%E9%9A%90%E5%86%99/">隐写</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/19/Pearce%E5%AD%A6%E4%B9%A0%E6%8A%A5%E5%91%8A%EF%BC%881%EF%BC%89/">Pearce学习报告(1)</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/17/hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">hexo博客搭建</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/16/hello-world/">Hello world</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2016-2020 Pearce
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+					<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+    <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.6.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        $("a[target=_blank]").removeAttr("target");
+    
+</script>
+
+    <script>
+        var originTitle = document.title;
+        var titleTime;
+        document.addEventListener("visibilitychange", function() {
+            if (document.hidden) {
+                document.title = "(つェ⊂) 我藏好了哦~ " + originTitle;
+                clearTimeout(titleTime);
+            }
+            else {
+                document.title = "(*´∇｀*) 被你发现啦~ " + originTitle;
+                titleTime = setTimeout(function() {
+                    document.title = originTitle;
+                }, 2000);
+            }
+        })
+    </script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>
